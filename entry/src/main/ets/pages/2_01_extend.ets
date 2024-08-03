@@ -1,3 +1,16 @@
+@Extend(Text)
+function textExtend(bgColor:ResourceColor,msg:string){
+  .textAlign(TextAlign.Center)
+  .backgroundColor(bgColor)
+  .fontColor(Color.White)
+  .fontSize(30)
+  .onClick(() => {
+    AlertDialog.show({
+      message: msg
+    })
+  })
+}
+
 @Entry
 @Component
 struct extend {
@@ -5,36 +18,14 @@ struct extend {
     Column() {
       Swiper() {
         Text('0')
-          .textAlign(TextAlign.Center)
-          .backgroundColor(Color.Red)
-          .fontColor(Color.White)
-          .fontSize(30)
-          .onClick(() => {
-            AlertDialog.show({
-              message: '轮播图 1'
-            })
-          })
+          .textExtend(Color.Red,'轮播图1')
         Text('1')
-          .textAlign(TextAlign.Center)
-          .backgroundColor(Color.Green)
-          .fontColor(Color.White)
-          .fontSize(30)
-          .onClick(() => {
-            AlertDialog.show({
-              message: '轮播图 2'
-            })
-          })
+          .textExtend(Color.Blue,'轮播图2')
         Text('2')
-          .textAlign(TextAlign.Center)
-          .backgroundColor(Color.Blue)
-          .fontColor(Color.White)
-          .fontSize(30)
-          .onClick(() => {
-            AlertDialog.show({
-              message: '轮播图 3'
-            })
-          })
+          .textExtend(Color.Yellow,'轮播图3')
       }
+      .width('100%')
+      .height(100)
     }
     .height('100%')
     .width('100%')
