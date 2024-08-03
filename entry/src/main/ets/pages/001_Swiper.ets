@@ -69,7 +69,7 @@ struct swiper {
       .width('100%')
       .height(100)
       .loop(true)//是否可以循环播放
-      .autoPlay(true)//开启自动播放
+      .autoPlay(true)//开启自动播放true是纵向
       .interval(300)//自动播放时间
       .indicator(false)//是否开启轮播小点
     }
