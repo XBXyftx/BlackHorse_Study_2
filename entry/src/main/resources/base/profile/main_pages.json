@@ -1,6 +1,8 @@
 {
   "src": [
     "pages/Index",
-    "pages/001_Swiper"
+    "pages/001_Swiper",
+    "pages/002_XiaoMiYouPin",
+    "pages/003_LunBoKongZhiTuoZhan"
   ]
 }
