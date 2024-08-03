@@ -4,7 +4,7 @@
 struct swiper {
   build() {
     Column() {
-      Swiper(){
+      Swiper(){//轮播图组件。统一写尺寸只用写一遍，不要每个都写
         Text('1')
           .textAlign(TextAlign.Center)
           .fontSize(20)
