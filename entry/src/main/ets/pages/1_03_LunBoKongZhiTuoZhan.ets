@@ -1,6 +1,6 @@
 @Entry
 @Component
-struct Index {
+struct LunBoKongZhiTuoZhan {
   //创建控制器对象
   controller:SwiperController=new SwiperController()
 
