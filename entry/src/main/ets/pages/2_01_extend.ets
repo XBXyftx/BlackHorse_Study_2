@@ -1,4 +1,4 @@
-@Extend(Text)
+@Extend(Text)//抽取某一组件的样式支持参数
 function textExtend(bgColor:ResourceColor,msg:string){
   .textAlign(TextAlign.Center)
   .backgroundColor(bgColor)

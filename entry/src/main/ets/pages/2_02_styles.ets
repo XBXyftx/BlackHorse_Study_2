@@ -5,7 +5,7 @@ struct styles {
   @State bgColor: ResourceColor = Color.Gray
 
   @Styles
-  style(){ //抽取公用属性
+  style(){ //抽取公用属性不支持参数
     .width(200)
     .height(100)
     .onClick(() => {
