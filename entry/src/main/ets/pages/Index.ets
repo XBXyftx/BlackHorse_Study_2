@@ -1,6 +1,6 @@
 @Entry
 @Component
-struct LunBoKongZhiTuoZhan {
+struct Index {
   build() {
     Column() {
 
