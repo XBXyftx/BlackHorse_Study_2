@@ -67,6 +67,24 @@ struct TaobaoPage {
           .width('100%')
         }
         .padding(10)
+
+        Grid(){
+          GridItem(){
+            Column({space:5}){
+              Image($r(this.contentList[0].icon))
+                .width(40)
+                .borderRadius(40)
+              Text(this.contentList[0].title)
+                .fontSize(14)
+                .fontColor(Color.White)
+            }
+          }
+        }
+        .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
+        .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+        .width('100%')
+        .height(360)
+
       }
     }
     .width('100%')
