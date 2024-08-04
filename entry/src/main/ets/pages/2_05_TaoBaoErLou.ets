@@ -69,16 +69,19 @@ struct TaobaoPage {
         .padding(10)
 
         Grid(){
-          GridItem(){
-            Column({space:5}){
-              Image($r(this.contentList[0].icon))
-                .width(40)
-                .borderRadius(40)
-              Text(this.contentList[0].title)
-                .fontSize(14)
-                .fontColor(Color.White)
+          ForEach(this.contentList,(item:TaoBaoItemContent,i)=>{
+            GridItem(){
+              Column({space:5}){
+                Image($r(item.icon))
+                  .width(40)
+                  .borderRadius(40)
+                Text(item.title)
+                  .fontSize(14)
+                  .fontColor(Color.White)
+              }
             }
-          }
+          })
+
         }
         .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
         .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
