@@ -6,6 +6,78 @@ interface TaoBaoItemContent {
 @Entry
 @Component
 struct TaobaoPage {
+  @Builder TaoBaoBuilder(){
+    Grid(){
+      ForEach(this.contentList,(item:TaoBaoItemContent,i)=>{
+        GridItem(){
+          Column({space:5}){
+            Image($r(item.icon))
+              .width(40)
+              .borderRadius(40)
+            Text(item.title)
+              .fontSize(14)
+              .fontColor(Color.White)
+          }
+        }
+      })
+
+    }
+    .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
+    .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
+    .width('100%')
+    .height(360)
+  }
+  @Builder ZuiJinShiYongBuilder(){
+    Row() {
+      Image($r('app.media.ic_taobao_back'))
+        .fillColor(Color.White)
+        .width(30)
+      Text('最近使用')
+        .fontSize(20)
+        .fontColor(Color.White)
+    }
+    .width('100%')
+    .padding({ top: 40 })
+  }
+  @Builder SouSuoLanBuilDer(){
+    Stack() {
+      Text()
+        .width('100%')
+        .height(40)
+        .backgroundColor(Color.White)
+        .opacity(.3)
+        .borderRadius(20)
+      Row({ space: 10 }) {
+        Image($r('app.media.ic_taobao_search'))
+          .width(25)
+          .fillColor(Color.White)
+        Text('搜索')
+          .fontSize(15)
+          .fontColor(Color.White)
+      }
+      .padding({ left: 10 })
+      .width('100%')
+    }
+    .padding(10)
+  }
+  @Builder ZongBuilder(){
+    Column() {
+      this.ZuiJinShiYongBuilder()
+
+      this.SouSuoLanBuilDer()
+
+      this.TaoBaoBuilder()
+
+    }
+    .width('100%')
+    .height('100%')
+    .linearGradient({
+      colors: [
+        ['#271b41', 0],
+        ['#481736', 1],
+      ]
+    })
+  }
   contentList: TaoBaoItemContent[] = [
     { title: '淘金币', icon: 'app.media.ic_taobao_01' },
     { title: '一起摇现金', icon: 'app.media.ic_taobao_02' },
@@ -33,71 +105,9 @@ struct TaobaoPage {
     { title: '天猫奢品', icon: 'app.media.ic_taobao_24' },
     { title: 'iFashion', icon: 'app.media.ic_taobao_25' }
   ]
-
   build() {
     Column() {
-      Column() {
-        Row() {
-          Image($r('app.media.ic_taobao_back'))
-            .fillColor(Color.White)
-            .width(30)
-          Text('最近使用')
-            .fontSize(20)
-            .fontColor(Color.White)
-        }
-        .width('100%')
-        .padding({ top: 40 })
-
-        Stack() {
-          Text()
-            .width('100%')
-            .height(40)
-            .backgroundColor(Color.White)
-            .opacity(.3)
-            .borderRadius(20)
-          Row({ space: 10 }) {
-            Image($r('app.media.ic_taobao_search'))
-              .width(25)
-              .fillColor(Color.White)
-            Text('搜索')
-              .fontSize(15)
-              .fontColor(Color.White)
-          }
-          .padding({ left: 10 })
-          .width('100%')
-        }
-        .padding(10)
-
-        Grid(){
-          ForEach(this.contentList,(item:TaoBaoItemContent,i)=>{
-            GridItem(){
-              Column({space:5}){
-                Image($r(item.icon))
-                  .width(40)
-                  .borderRadius(40)
-                Text(item.title)
-                  .fontSize(14)
-                  .fontColor(Color.White)
-              }
-            }
-          })
-
-        }
-        .rowsTemplate('1fr 1fr 1fr 1fr 1fr')
-        .columnsTemplate('1fr 1fr 1fr 1fr 1fr')
-        .width('100%')
-        .height(360)
-
-      }
+      this.ZongBuilder()
     }
-    .width('100%')
-    .height('100%')
-    .linearGradient({
-      colors: [
-        ['#271b41', 0],
-        ['#481736', 1],
-      ]
-    })
-
   }
 }
