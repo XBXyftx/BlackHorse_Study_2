@@ -2,7 +2,6 @@ interface TaoBaoItemContent {
   title: string
   icon: string
 }
-
 @Entry
 @Component
 struct TaobaoPage {
