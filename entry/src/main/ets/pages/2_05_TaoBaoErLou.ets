@@ -5,6 +5,11 @@ interface TaoBaoItemContent {
 @Entry
 @Component
 struct TaobaoPage {
+  build() {
+    Column() {
+      this.ZongBuilder()
+    }
+  }
   @Builder TaoBaoBuilder(){
     Grid(){
       ForEach(this.contentList,(item:TaoBaoItemContent,i)=>{
@@ -104,9 +109,4 @@ struct TaobaoPage {
     { title: '天猫奢品', icon: 'app.media.ic_taobao_24' },
     { title: 'iFashion', icon: 'app.media.ic_taobao_25' }
   ]
-  build() {
-    Column() {
-      this.ZongBuilder()
-    }
-  }
 }
