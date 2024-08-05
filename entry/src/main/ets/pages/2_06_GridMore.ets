@@ -61,27 +61,27 @@ struct GridMore {
       ForEach(this.nums, (item: number, index: number) => {
         if (index === 2) {
           this.GridItemBuilder({
-            text: index.toString(),
+            text: (index+1).toString(),
             color: Color.Blue,
             ColumnStart: 3,
             ColumnEnd: 4
           })
         } else if (index === 3) {
           this.GridItemBuilder({
-            text: index.toString(),
+            text: (index+1).toString(),
             color: '#ff0ef12d',
             RowStart: 2,
             RowEnd: 3
           })
         } else if (index === 7) {
           this.GridItemBuilder({
-            text: index.toString(),
+            text: (index+1).toString(),
             color: '#fff00303',
             ColumnStart: 2,
             ColumnEnd: 4
           })
         } else {
-          this.GridItemBuilder({ text: index.toString(), color: '#9dc3e6' })
+          this.GridItemBuilder({ text: (index+1).toString(), color: '#9dc3e6' })
         }
       })
     }
