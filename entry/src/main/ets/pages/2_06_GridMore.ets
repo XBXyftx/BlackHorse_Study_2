@@ -6,13 +6,11 @@ interface GridItemBuilderValue {
   ColumnStart?: number,
   ColumnEnd?: number
 }
-
 @Entry
 @Component
 struct GridMore {
   // 生成 12 个元素的数组
   nums: number[] = Array.from({ length: 20 })
-
   @Builder
   GridItemBuilder(value: GridItemBuilderValue) {
     if (value.RowStart && value.RowEnd) {
@@ -57,8 +55,8 @@ struct GridMore {
     }
 
   }
-
-  build() {
+  @Builder
+  GridMoreZong(){
     Grid() {
       ForEach(this.nums, (item: number, index: number) => {
         if (index === 2) {
@@ -66,6 +64,20 @@ struct GridMore {
             text: index.toString(),
             color: Color.Blue,
             ColumnStart: 3,
+            ColumnEnd: 4
+          })
+        } else if (index === 3) {
+          this.GridItemBuilder({
+            text: index.toString(),
+            color: '#ff0ef12d',
+            RowStart: 2,
+            RowEnd: 3
+          })
+        } else if (index === 7) {
+          this.GridItemBuilder({
+            text: index.toString(),
+            color: '#fff00303',
+            ColumnStart: 2,
             ColumnEnd: 4
           })
         } else {
@@ -76,9 +88,14 @@ struct GridMore {
     .columnsTemplate('1fr 1fr 1fr 1fr')
     .rowsTemplate('1fr 1fr 1fr')
     .width('100%')
-    // .height(260)
+    .height(260)
     .rowsGap(10)
     .columnsGap(10)
     .padding(10)
+  }
+  build() {
+    Column(){
+      this.GridMoreZong()
+    }
   }
 }
