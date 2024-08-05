@@ -18,8 +18,8 @@ struct Day01_09_Grid05 {
         })
 
       }
-      .columnsTemplate('1fr 1fr 1fr') // 竖向滚动
-      // .rowsTemplate('1fr 1fr 1fr') // 横向滚动
+      // .columnsTemplate('1fr 1fr 1fr') // 竖向滚动
+      .rowsTemplate('1fr 1fr 1fr') // 横向滚动
       .rowsGap(10)
       .width('100%')
       .height(300)
