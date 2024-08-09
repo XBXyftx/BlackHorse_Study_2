@@ -25,12 +25,16 @@ struct GridDemo5 {
         Button('上一页')
           .width(100)
           .onClick(() => {
-
+            this.scroller.scrollPage({
+              next:false//设置为假就是上一页的意思
+            })
           })
         Button('下一页')
           .width(100)
           .onClick(() => {
-
+            this.scroller.scrollPage({
+              next:true
+            })
           })
       }
       .width('100%')
