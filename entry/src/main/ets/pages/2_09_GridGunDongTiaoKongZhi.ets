@@ -2,6 +2,7 @@
 @Component
 struct GridDemo5 {
   nums: number[] = Array.from({ length: 200 })
+  scroller: Scroller = new Scroller()
 
   build() {
     Column() {
