@@ -11,6 +11,8 @@
     "pages/1_09_GridMore",
     "pages/1_10_GridGunDong",
     "pages/1_11_XiaoMiYouPin2",
-    "pages/1_13_GridGunDongTiaoYangShi"
+    "pages/1_13_GridGunDongTiaoYangShi",
+    "pages/2_01_Scroll01",
+    "pages/2_02_Scroll02XiaoMiYouPin"
   ]
 }
