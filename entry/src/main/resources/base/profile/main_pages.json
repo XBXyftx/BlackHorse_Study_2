@@ -4,13 +4,13 @@
     "pages/1_01_Swiper",
     "pages/1_02_XiaoMiYouPin",
     "pages/1_03_LunBoKongZhiTuoZhan",
-    "pages/2_01_extend",
-    "pages/2_03_builder",
-    "pages/2_04_grid",
-    "pages/2_05_TaoBaoErLou",
-    "pages/2_06_GridMore",
-    "pages/2_07_GridGunDong",
-    "pages/2_08_XiaoMiYouPin2",
-    "pages/2_10_GridGunDongTiaoYangShi"
+    "pages/1_04_extend",
+    "pages/1_06_builder",
+    "pages/1_07_grid",
+    "pages/1_08_TaoBaoErLou",
+    "pages/1_09_GridMore",
+    "pages/1_10_GridGunDong",
+    "pages/1_11_XiaoMiYouPin2",
+    "pages/1_13_GridGunDongTiaoYangShi"
   ]
 }
