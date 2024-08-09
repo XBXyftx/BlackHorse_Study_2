@@ -39,6 +39,21 @@ struct GunDongTiaoYangShi {
       }
       .width('100%')
       .justifyContent(FlexAlign.SpaceAround)
+
+      ScrollBar({
+        direction:ScrollBarDirection.Horizontal,
+        scroller:this.scroller
+      }){
+        Text()
+          .width(20)
+          .height(10)
+          .backgroundColor(Color.Black)
+          .borderRadius(20)
+      }
+      .width(200)
+      .height(10)
+      .backgroundColor(Color.Pink)
+      .borderRadius(20)
     }
   }
 }
