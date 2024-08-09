@@ -6,7 +6,7 @@ struct GridDemo5 {
 
   build() {
     Column() {
-      Grid() {
+      Grid(this.scroller) {
         ForEach(this.nums, (item: number, index: number) => {
           GridItem() {
             Text(index + 1 + '')
