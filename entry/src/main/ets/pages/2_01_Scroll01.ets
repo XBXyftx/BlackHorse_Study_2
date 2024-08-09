@@ -22,8 +22,11 @@ struct Scroll01 {
 
         }
       }
+      .scrollBarWidth(20)
+      .scrollBarColor(Color.Black)
       .width('100%')
       .height(200)
+      .edgeEffect(EdgeEffect.Spring)
     }
     .height('100%')
     .width('100%')
