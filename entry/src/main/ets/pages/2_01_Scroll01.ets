@@ -6,10 +6,10 @@ struct Scroll01 {
     Column() {
       Scroll(){
         //scroll也有唯一根组件原则
-        Column({space:10}){
+        Row({space:10}){
 
           ForEach(this.list,(item:number,i)=>{
-            Column(){
+            Row(){
               Text(i.toString())
                 .fontSize(30)
                 .fontWeight(800)
@@ -17,11 +17,12 @@ struct Scroll01 {
             .justifyContent(FlexAlign.Center)
             .backgroundColor(Color.Orange)
             .height(100)
-            .width('100%')
+            .width(300)
           })
 
         }
       }
+      .scrollable(ScrollDirection.Horizontal)
       .scrollBarWidth(20)
       .scrollBarColor(Color.Black)
       .width('100%')
