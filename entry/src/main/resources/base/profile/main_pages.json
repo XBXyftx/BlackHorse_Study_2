@@ -15,6 +15,7 @@
     "pages/2_01_Scroll01",
     "pages/2_02_Scroll02XiaoMiYouPin",
     "pages/2_03_ScrollerControl",
-    "pages/2_04_OnScroll"
+    "pages/2_04_OnScroll",
+    "pages/2_05_JingDong"
   ]
 }

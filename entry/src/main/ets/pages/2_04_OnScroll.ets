@@ -1,6 +1,6 @@
 @Entry
 @Component
-struct Index {
+struct OnScroll {
   sc:Scroller = new Scroller()
   build() {
     Column({space:10}){
@@ -23,8 +23,7 @@ struct Index {
       .height(200)
       .borderRadius(15)
       .onWillScroll(( ) => {
-        const yOffset = this.sc.currentOffset()
-          .yOffset
+        const yOffset = this.sc.currentOffset().yOffset
         console.log(`滚动条的位置是:${yOffset}`)
       })
     }
