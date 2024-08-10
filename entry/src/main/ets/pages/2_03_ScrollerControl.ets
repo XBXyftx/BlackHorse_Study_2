@@ -23,6 +23,13 @@ struct ScrollerControl {
       .width('100%')
       .height(200)
       .border({width:1,color:Color.Orange})
+      Row(){
+        Button('滚到顶部或者是底部')
+          .onClick(()=>{
+            // this.scroller.scrollEdge(Edge.Top)
+            this.scroller.scrollEdge(Edge.Bottom)//滚动到头或者是到底
+          })
+      }
 
     }
     .width('100%')
