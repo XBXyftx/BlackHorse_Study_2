@@ -23,11 +23,16 @@ struct ScrollerControl {
       .width('100%')
       .height(200)
       .border({width:1,color:Color.Orange})
-      Row(){
+      Row({space:5}){
         Button('滚到顶部或者是底部')
           .onClick(()=>{
             // this.scroller.scrollEdge(Edge.Top)
             this.scroller.scrollEdge(Edge.Bottom)//滚动到头或者是到底
+          })
+        Button('获取滚动距离')
+          .onClick(()=>{
+            const X=this.scroller.currentOffset().xOffset//currentOffset是一个对象内部包含横向和纵向的滚动距离数据值
+            const Y=this.scroller.currentOffset().yOffset
           })
       }
 
