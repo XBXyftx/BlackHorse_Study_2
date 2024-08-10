@@ -33,6 +33,7 @@ struct ScrollerControl {
           .onClick(()=>{
             const X=this.scroller.currentOffset().xOffset//currentOffset是一个对象内部包含横向和纵向的滚动距离数据值
             const Y=this.scroller.currentOffset().yOffset
+            AlertDialog.show({message:'您滚了X:'+X+'Y:'+Y})
           })
       }
 
