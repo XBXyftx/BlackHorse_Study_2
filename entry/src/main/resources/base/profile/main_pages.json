@@ -18,6 +18,7 @@
     "pages/2_04_OnScroll",
     "pages/2_05_JingDong",
     "pages/2_06_TabLearn",
-    "pages/2_07_GunDongDaoHangYe"
+    "pages/2_07_GunDongDaoHangYe",
+    "pages/2_08_TabBarBuilder"
   ]
 }
