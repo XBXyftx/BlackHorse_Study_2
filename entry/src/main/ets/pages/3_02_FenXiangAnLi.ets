@@ -1,6 +1,7 @@
 @Entry
 @Component
 struct SheetTransitionExample1 {
+  @State isShow:boolean=false
   // 半模态 Builder
   @Builder
   myBuilder() {
@@ -13,6 +14,9 @@ struct SheetTransitionExample1 {
         Image($rawfile('ic_public_cancel.svg'))
           .width(25)
           .fillColor('#c0c0c0')
+          .onClick(()=>{
+            this.isShow=false
+          })
       }
       .width('100%')
 
@@ -45,9 +49,13 @@ struct SheetTransitionExample1 {
     Column() {
       Button(`显示半模态`)
         .fontSize(20)
-
-      // 展示半模态Builder
-      this.myBuilder()
+        .bindSheet($$this.isShow,this.myBuilder(),{
+          height:SheetSize.FIT_CONTENT,
+          showClose:false
+      })
+        .onClick(()=>{
+          this.isShow=true
+        })
 
     }
     .justifyContent(FlexAlign.Center)
