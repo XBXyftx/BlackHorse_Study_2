@@ -8,6 +8,10 @@ struct ModalTransitionExample {
   @Builder
   myBuilder() {
     Column() {
+      Button('点我关闭')
+        .onClick(()=>{
+          this.isShow=false
+        })
     }
     .width('100%')
     .height('100%')
@@ -21,7 +25,7 @@ struct ModalTransitionExample {
         .fontSize(20)
         .margin(10)
           // 绑定并控制显示
-        .bindContentCover(this.isShow, this.myBuilder())
+        .bindContentCover($$this.isShow, this.myBuilder())
         .onClick(() => {
           this.isShow = true
         })
