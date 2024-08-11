@@ -25,7 +25,9 @@ struct ModalTransitionExample {
         .fontSize(20)
         .margin(10)
           // 绑定并控制显示
-        .bindContentCover($$this.isShow, this.myBuilder())
+        .bindContentCover($$this.isShow, this.myBuilder(),{
+          modalTransition:ModalTransition.DEFAULT
+        })
         .onClick(() => {
           this.isShow = true
         })
