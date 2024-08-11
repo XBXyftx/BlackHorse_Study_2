@@ -1,3 +1,5 @@
+import { trustedAppService } from '@kit.DeviceSecurityKit'
+
 @Entry
 @Component
 struct SheetTransitionExample1 {
@@ -26,7 +28,9 @@ struct SheetTransitionExample1 {
           {
             // height: SheetSize.MEDIUM//半屏
             // height: SheetSize.LARGE//默认几乎满屏
-            height: SheetSize.FIT_CONTENT//跟随内容自动变化
+            // height: SheetSize.FIT_CONTENT, //跟随内容自动变化
+            dragBar:true,//拉拽横线
+            detents:[SheetSize.MEDIUM,SheetSize.LARGE,SheetSize.FIT_CONTENT]
           }
         )
         .onClick(() => {
