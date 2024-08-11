@@ -1,6 +1,13 @@
 @Entry
 @Component
 struct ListMore {
+  @Builder HeadBuilder(){
+    Text('A')
+      .fontSize(30)
+      .padding(10)
+      .fontColor(Color.Pink)
+      .backgroundColor(Color.Gray)
+  }
   build() {
     Column() {
       List(){
