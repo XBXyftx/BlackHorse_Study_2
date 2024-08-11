@@ -8,7 +8,7 @@ struct SheetTransitionExample1 {
   //但是点半模态自带的不会更新变量状态所以需要双向绑定
   @Builder
   myBuilder() {
-    Column(){
+    Column() {
 
     }
     .backgroundColor(Color.Blue)
@@ -18,10 +18,17 @@ struct SheetTransitionExample1 {
 
   build() {
     Column() {
-      Button(`显示半模态`)
-        //  3.绑定半模态框
+      Button(`显示半模态`)//  3.绑定半模态框
         //$$是双向绑定
-        .bindSheet($$this.isShow, this.myBuilder())
+        .bindSheet(
+          $$this.isShow,
+          this.myBuilder(),
+          {
+            // height: SheetSize.MEDIUM//半屏
+            // height: SheetSize.LARGE//默认几乎满屏
+            height: SheetSize.FIT_CONTENT//跟随内容自动变化
+          }
+        )
         .onClick(() => {
           // 4.控制显示
           this.isShow = true
