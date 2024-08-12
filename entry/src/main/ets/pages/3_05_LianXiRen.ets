@@ -60,7 +60,10 @@ struct ContactsList {
       .width('100%')
       .padding(15)
       .backgroundColor('#fff1f3f5')
-
+      Button('点击滚动')
+        .onClick(()=>{
+          this.ls.scrollToIndex(2,true)
+        })
       List({scroller:this.ls}) {
         // 顶部
         ListItem() {
@@ -98,6 +101,7 @@ struct ContactsList {
 
       }
       .sticky(StickyStyle.Header)//分组顶部吸附
+
     }
 
   }
