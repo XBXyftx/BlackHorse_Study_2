@@ -101,6 +101,9 @@ struct ContactsList {
 
       }
       .sticky(StickyStyle.Header)//分组顶部吸附
+      .onScrollIndex((start:number)=>{
+        console.log('start'+start)
+      })
 
     }
 
