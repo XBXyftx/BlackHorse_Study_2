@@ -134,7 +134,8 @@ struct HomeWork {
 
           //视频
           TabContent() {
-
+            Image($rawfile('banner_01_4.jpg'))
+              .height('100%')
           }
           .tabBar(this.tabBarBuilder('视频', 1))
 
