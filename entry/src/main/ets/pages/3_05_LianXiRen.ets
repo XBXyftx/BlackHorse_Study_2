@@ -95,6 +95,7 @@ struct ContactsList {
         })
 
       }
+      .sticky(StickyStyle.Header)//分组顶部吸附
     }
 
   }
