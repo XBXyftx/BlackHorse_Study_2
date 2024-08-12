@@ -38,6 +38,8 @@ struct ContactsList {
     { initial: 'Z', nameList: ['珍珠', '紫薇', '紫霞', '紫竹', '紫云', '紫燕', '紫鸢', '紫藤', '紫荆', '紫罗兰'] },
   ]
 
+  ls:ListScroller=new ListScroller()
+
   getRandomColor(): ResourceColor {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
@@ -59,7 +61,7 @@ struct ContactsList {
       .padding(15)
       .backgroundColor('#fff1f3f5')
 
-      List() {
+      List({scroller:this.ls}) {
         // 顶部
         ListItem() {
           Row() {
