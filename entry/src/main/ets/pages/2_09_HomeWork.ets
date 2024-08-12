@@ -7,6 +7,54 @@ interface News {
 @Entry
 @Component
 struct HomeWork {
+
+  build() {
+    Column() {
+      Stack({ alignContent: Alignment.Bottom }) {
+        //底部图片
+        Image((this.index === 1) ? $rawfile('bg_02_2.png') : $rawfile('bg_02_1.png'))
+          .width('100%')
+
+        //正经内容最外层组件
+        Tabs({ barPosition: BarPosition.End }) {
+          //首页
+          TabContent() {
+            this.ShouYeBuilder()
+          }
+          .tabBar(this.tabBarBuilder('首页', 0))
+
+          //视频
+          TabContent() {
+            Image($rawfile('banner_01_4.jpg'))
+              .height('100%')
+          }
+          .tabBar(this.tabBarBuilder('视频', 1))
+
+          //消息
+          TabContent() {
+
+          }
+          .tabBar(this.tabBarBuilder('消息', 2, 9))
+
+          //我的
+          TabContent() {
+
+          }
+          .tabBar(this.tabBarBuilder('我的', 3))
+
+        }
+        .onChange((index: number) => {
+          this.index = index
+        })
+
+      }
+      .height('100%')
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+
   news: News[] = [
     { img: $rawfile('list_02_1.jpg'), text: '字节一面：TCP和UDP可以使用同一个端口号吗？', time: '2024-03-05 10:07:22' },
     { img: $rawfile('list_02_2.jpg'), text: '字节一面：TCP和UDP可以使用同一个端口号吗？', time: '2024-03-05 10:07:22' },
@@ -115,52 +163,5 @@ struct HomeWork {
         .strokeWidth(1)
         .margin({bottom:15})
     }
-  }
-
-  build() {
-    Column() {
-      Stack({ alignContent: Alignment.Bottom }) {
-        //底部图片
-        Image((this.index === 1) ? $rawfile('bg_02_2.png') : $rawfile('bg_02_1.png'))
-          .width('100%')
-
-        //正经内容最外层组件
-        Tabs({ barPosition: BarPosition.End }) {
-          //首页
-          TabContent() {
-            this.ShouYeBuilder()
-          }
-          .tabBar(this.tabBarBuilder('首页', 0))
-
-          //视频
-          TabContent() {
-            Image($rawfile('banner_01_4.jpg'))
-              .height('100%')
-          }
-          .tabBar(this.tabBarBuilder('视频', 1))
-
-          //消息
-          TabContent() {
-
-          }
-          .tabBar(this.tabBarBuilder('消息', 2, 9))
-
-          //我的
-          TabContent() {
-
-          }
-          .tabBar(this.tabBarBuilder('我的', 3))
-
-        }
-        .onChange((index: number) => {
-          this.index = index
-        })
-
-      }
-      .height('100%')
-      .width('100%')
-    }
-    .height('100%')
-    .width('100%')
   }
 }
