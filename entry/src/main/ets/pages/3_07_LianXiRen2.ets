@@ -6,6 +6,7 @@ interface ContactContent {
 @Entry
 @Component
 struct ContactsList2 {
+  @State index:number=0
   alphabets: string[] = [ 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
     'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
   contacts: ContactContent[] = [
@@ -62,50 +63,68 @@ struct ContactsList2 {
       .width('100%')
       .padding(15)
       .backgroundColor('#fff1f3f5')
-      Button('点击滚动')
-        .onClick(()=>{
-          this.ls.scrollToIndex(2,true)
-        })
-      List({scroller:this.ls}) {
-        // 顶部
-        ListItem() {
-          Row() {
-            Image($rawfile('ic_public_search.svg'))
-              .width(20)
-              .fillColor(Color.Gray)
-            Text('搜索')
-              .fontColor(Color.Gray)
-          }
-          .backgroundColor(Color.White)
-          .width('100%')
-          .height(40)
-          .borderRadius(5)
-          .justifyContent(FlexAlign.Center)
+      // Button('点击滚动')
+      //   .onClick(()=>{
+      //     this.ls.scrollToIndex(2,true)
+      //     this.index=2
+      //   })
+      // 顶部
+      Column() {
+        Row() {
+          Image($rawfile('ic_public_search.svg'))
+            .width(20)
+            .fillColor(Color.Gray)
+          Text('搜索')
+            .fontColor(Color.Gray)
         }
-        .padding(10)
+        .backgroundColor(Color.White)
         .width('100%')
-        .backgroundColor('#fff1f3f5')
+        .height(40)
+        .borderRadius(5)
+        .justifyContent(FlexAlign.Center)
+      }
+      .padding(10)
+      .width('100%')
+      .backgroundColor('#fff1f3f5')
 
-        ForEach(this.contacts, (item: ContactContent, i) => {
-          ListItemGroup({ header: this.itemHead(item.initial), space: 10 }) {
-            // 循环渲染分组A的ListItem
-            ForEach(item.nameList, (text: string, index: number) => {
-              this.contactBuilder(text, this.getRandomColor())
+      Stack({alignContent:Alignment.End}){
+
+          List({scroller:this.ls}) {
+
+
+            ForEach(this.contacts, (item: ContactContent, i) => {
+              ListItemGroup({ header: this.itemHead(item.initial), space: 10 }) {
+                // 循环渲染分组A的ListItem
+                ForEach(item.nameList, (text: string, index: number) => {
+                  this.contactBuilder(text, this.getRandomColor())
+                })
+
+              }
+              .divider({
+                startMargin: 60,
+                strokeWidth: 1,
+                color: '#ccc'
+              })
             })
 
           }
-          .divider({
-            startMargin: 60,
-            strokeWidth: 1,
-            color: '#ccc'
+          .sticky(StickyStyle.Header)//分组顶部吸附
+          .onScrollIndex((start:number)=>{
+            this.index=start
           })
-        })
+          AlphabetIndexer({
+            arrayValue:this.alphabets,
+            selected:$$this.index
+          })
+            .scale({x:1.3,y:1.3})
+            .usingPopup(true)
+            .onSelect((index:number)=>{
+              this.index=index
+              this.ls.scrollToIndex(this.index)
+            })
+            .offset({y:-30})
 
       }
-      .sticky(StickyStyle.Header)//分组顶部吸附
-      .onScrollIndex((start:number)=>{
-        console.log('start'+start)
-      })
 
     }
 
