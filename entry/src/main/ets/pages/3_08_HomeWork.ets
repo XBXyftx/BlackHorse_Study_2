@@ -308,7 +308,7 @@ struct HomeWork2 {
         ForEach(this.titles,(item:TopicItem,i)=>{
           ListItemGroup({header:this.HeaderBuilder(item.title)}){
             ForEach(item.children,(it:children,index)=>{
-
+              this.ListBuilder(it.subTitle,it.total)
             })
           }
         })
@@ -328,9 +328,26 @@ struct HomeWork2 {
         .width(30)
       Text(title)
         .fontSize(30)
+        .fontWeight(800)
     }
     .padding(20)
     .backgroundColor(Color.Gray)
+    .width('100%')
+  }
+
+  @Builder
+  ListBuilder(text:string,time:string){
+    Row({space:8}){
+      Image($rawfile('ic_03_title.png'))
+        .width(20)
+      Text(text)
+        .fontSize(20)
+        .fontWeight(500)
+      Blank()
+      Text(`数量${time}`)
+    }
+    .padding({left:30,right:30,top:10,bottom:10})
+    .backgroundColor(Color.White)
     .width('100%')
   }
 }
