@@ -21,8 +21,6 @@ interface children {
 }
 
 
-
-
 @Entry
 @Component
 struct HomeWork2 {
@@ -218,7 +216,7 @@ struct HomeWork2 {
 
   imgs: Resource[] =
     [$rawfile('banner_01_1.jpg'), $rawfile('banner_01_2.jpg'), $rawfile('banner_01_3.jpg'), $rawfile('banner_01_4.jpg')]
-  titles:TopicItem[]=[
+  titles: TopicItem[] = [
     {
       title: '开发',
       children: [
@@ -285,6 +283,7 @@ struct HomeWork2 {
     { title: '元宇宙' },
     { title: '原创' }
   ]
+
   @Builder
   coverBuilder() {
     Column() {
@@ -304,16 +303,24 @@ struct HomeWork2 {
       .width('100%')
       .margin({ bottom: 20, top: 20 })
 
-      List() {
-        ForEach(this.titles,(item:TopicItem,i)=>{
-          ListItemGroup({header:this.HeaderBuilder(item.title)}){
-            ForEach(item.children,(it:children,index)=>{
-              this.ListBuilder(it.subTitle,it.total)
-            })
-          }
+      Stack({ alignContent: Alignment.End }) {
+        List() {
+          ForEach(this.titles, (item: TopicItem, i) => {
+            ListItemGroup({ header: this.HeaderBuilder(item.title) }) {
+              ForEach(item.children, (it: children, index) => {
+                this.ListBuilder(it.subTitle, it.total)
+              })
+            }
+          })
+        }
+        .onScrollIndex((start: number) => {
+          this.listIndex = start
         })
+        .width('100%')
+
+        AlphabetIndexer({arrayValue:this.AlphString,selected:$$this.listIndex})
+
       }
-      .width('100%')
       .layoutWeight(1)
 
     }
@@ -321,9 +328,11 @@ struct HomeWork2 {
     .backgroundColor(Color.White)
   }
 
+  @State listIndex: number = 0
+  AlphString:string[]=['开', '智', '云', '源', '网', '大', '区', '服', '元', '原']
   @Builder
-  HeaderBuilder(title:string){
-    Row({space:10}){
+  HeaderBuilder(title: string) {
+    Row({ space: 10 }) {
       Image($rawfile('ic_03_title.png'))
         .width(30)
       Text(title)
@@ -336,8 +345,8 @@ struct HomeWork2 {
   }
 
   @Builder
-  ListBuilder(text:string,time:string){
-    Row({space:8}){
+  ListBuilder(text: string, time: string) {
+    Row({ space: 8 }) {
       Image($rawfile('ic_03_title.png'))
         .width(20)
       Text(text)
@@ -346,7 +355,12 @@ struct HomeWork2 {
       Blank()
       Text(`数量${time}`)
     }
-    .padding({left:30,right:30,top:10,bottom:10})
+    .padding({
+      left: 30,
+      right: 30,
+      top: 10,
+      bottom: 10
+    })
     .backgroundColor(Color.White)
     .width('100%')
   }
