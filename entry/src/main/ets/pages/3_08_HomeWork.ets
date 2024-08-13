@@ -304,7 +304,7 @@ struct HomeWork2 {
       .margin({ bottom: 20, top: 20 })
 
       Stack({ alignContent: Alignment.End }) {
-        List() {
+        List({scroller:this.ls}) {
           ForEach(this.titles, (item: TopicItem, i) => {
             ListItemGroup({ header: this.HeaderBuilder(item.title) }) {
               ForEach(item.children, (it: children, index) => {
@@ -319,6 +319,12 @@ struct HomeWork2 {
         .width('100%')
 
         AlphabetIndexer({arrayValue:this.AlphString,selected:$$this.listIndex})
+          .onSelect((index:number)=>{
+            this.listIndex=index
+            this.ls.scrollToIndex(this.listIndex)
+          })
+          .scale({x:1.6,y:1.6})
+          .usingPopup(true)
 
       }
       .layoutWeight(1)
@@ -327,7 +333,7 @@ struct HomeWork2 {
     .height('100%')
     .backgroundColor(Color.White)
   }
-
+  ls:ListScroller=new ListScroller()
   @State listIndex: number = 0
   AlphString:string[]=['开', '智', '云', '源', '网', '大', '区', '服', '元', '原']
   @Builder
