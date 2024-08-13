@@ -9,6 +9,16 @@ interface title {
   str: string
 }
 
+interface Children{
+  text:string
+  num:string
+}
+
+interface HuaTi {
+  title:string
+  child:Children[]
+}
+
 @Entry
 @Component
 struct HomeWork2 {
@@ -220,7 +230,7 @@ struct HomeWork2 {
           })
       }
       .width('100%')
-      .margin({top:20})
+      .margin({bottom:20,top:20})
 
       List(){
 
@@ -232,4 +242,5 @@ struct HomeWork2 {
     .height('100%')
     .backgroundColor(Color.White)
   }
+
 }
