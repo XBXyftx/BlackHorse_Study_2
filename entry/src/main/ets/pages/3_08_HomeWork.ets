@@ -9,15 +9,19 @@ interface title {
   str: string
 }
 
-interface Children{
-  text:string
-  num:string
+
+interface TopicItem {
+  title: string,
+  children?: children[]
 }
 
-interface HuaTi {
-  title:string
-  child:Children[]
+interface children {
+  subTitle: string,
+  total: string
 }
+
+
+
 
 @Entry
 @Component
@@ -68,7 +72,8 @@ struct HomeWork2 {
     .height('100%')
     .width('100%')
   }
-  @State isShow:boolean=true
+
+  @State isShow: boolean = true
   news: News1[] = [
     { img: $rawfile('list_02_1.jpg'), text: '字节一面：TCP和UDP可以使用同一个端口号吗？', time: '2024-03-05 10:07:22' },
     { img: $rawfile('list_02_2.jpg'), text: '字节一面：TCP和UDP可以使用同一个端口号吗？', time: '2024-03-05 10:07:22' },
@@ -115,10 +120,10 @@ struct HomeWork2 {
           .height(25)
         Image($rawfile('more_01.svg'))
           .height(25)
-          .onClick(()=>{
-            this.isShow=true
+          .onClick(() => {
+            this.isShow = true
           })
-          .bindContentCover($$this.isShow,this.coverBuilder())
+          .bindContentCover($$this.isShow, this.coverBuilder())
       }
       .width('100%')
       .padding({ left: 10, right: 20 })
@@ -126,7 +131,7 @@ struct HomeWork2 {
       Grid() {
         ForEach(this.title, (item: title, i) => {
           GridItem() {
-            Column(){
+            Column() {
               Image(item.img)
                 .width(40)
               Text(item.str)
@@ -199,9 +204,9 @@ struct HomeWork2 {
   }
 
   @Builder
-  shouYeLunBoBuilder(imgs:Resource[]){
-    Swiper(){
-      ForEach(imgs,(img:Resource,i)=>{
+  shouYeLunBoBuilder(imgs: Resource[]) {
+    Swiper() {
+      ForEach(imgs, (img: Resource, i) => {
         Image(img)
       })
 
@@ -211,12 +216,79 @@ struct HomeWork2 {
     .interval(1000)
   }
 
-  imgs:Resource[]=[$rawfile('banner_01_1.jpg'),$rawfile('banner_01_2.jpg'),$rawfile('banner_01_3.jpg'),$rawfile('banner_01_4.jpg')]
-
+  imgs: Resource[] =
+    [$rawfile('banner_01_1.jpg'), $rawfile('banner_01_2.jpg'), $rawfile('banner_01_3.jpg'), $rawfile('banner_01_4.jpg')]
+  titles:TopicItem[]=[
+    {
+      title: '开发',
+      children: [
+        { subTitle: '前端', total: '2.3w' },
+        { subTitle: '后端', total: '2.5w' },
+        { subTitle: '开发工具', total: '7181' },
+        { subTitle: '游戏开发', total: '1001' },
+        { subTitle: '项目管理', total: '608' },
+        { subTitle: '架构', total: '2005' },
+        { subTitle: 'VR/AR', total: '100' },
+      ]
+    },
+    {
+      title: '人工智能',
+      children: [
+        { subTitle: '机器学习', total: '2.3w' },
+        { subTitle: '深度学习', total: '2.5w' },
+        { subTitle: '算法', total: '7181' },
+        { subTitle: '语音识别', total: '1001' },
+        { subTitle: '人脸识别', total: '608' },
+        { subTitle: '机器视觉', total: '2005' },
+        { subTitle: '无人驾驶', total: '100' },
+        { subTitle: '机器人', total: '100' },
+      ]
+    },
+    {
+      title: '云计算',
+      children: [
+        { subTitle: '云原生', total: '2.3w' },
+        { subTitle: '混合云', total: '2.5w' },
+        { subTitle: '分布式', total: '7181' },
+        { subTitle: 'Laas', total: '1001' },
+        { subTitle: 'Paas', total: '608' },
+        { subTitle: 'Saas', total: '2005' },
+        { subTitle: 'Kafka', total: '100' },
+        { subTitle: '虚拟化', total: '100' },
+      ]
+    },
+    { title: '开源' },
+    {
+      title: '网络',
+      children: [
+        { subTitle: '网络设备', total: '2.3w' },
+        { subTitle: '通信技术', total: '2.5w' },
+        { subTitle: '网络优化', total: '7181' },
+        { subTitle: '网络管理', total: '1001' },
+        { subTitle: '路由交换', total: '608' },
+        { subTitle: '布线接入', total: '2005' },
+      ]
+    },
+    {
+      title: '大数据',
+      children: [
+        { subTitle: '数据分析', total: '2.3w' },
+        { subTitle: '数据可视化', total: '2.5w' },
+        { subTitle: '商业智能', total: '7181' },
+        { subTitle: 'Spark', total: '1001' },
+        { subTitle: '数据湖', total: '608' },
+        { subTitle: '数据仓库', total: '2005' },
+      ]
+    },
+    { title: '区块链' },
+    { title: '服务器' },
+    { title: '元宇宙' },
+    { title: '原创' }
+  ]
   @Builder
-  coverBuilder(){
-    Column(){
-      Stack({alignContent:Alignment.End}){
+  coverBuilder() {
+    Column() {
+      Stack({ alignContent: Alignment.End }) {
         Text('全部话题')
           .fontSize(35)
           .width('100%')
@@ -224,16 +296,22 @@ struct HomeWork2 {
           .fontWeight(800)
         Image($rawfile('ic_public_cancel.svg'))
           .width(30)
-          .margin({right:20})
-          .onClick(()=>{
-            this.isShow=false
+          .margin({ right: 20 })
+          .onClick(() => {
+            this.isShow = false
           })
       }
       .width('100%')
-      .margin({bottom:20,top:20})
+      .margin({ bottom: 20, top: 20 })
 
-      List(){
+      List() {
+        ForEach(this.titles,(item:TopicItem,i)=>{
+          ListItemGroup({header:this.HeaderBuilder(item.title)}){
+            ForEach(item.children,(it:children,index)=>{
 
+            })
+          }
+        })
       }
       .width('100%')
       .layoutWeight(1)
@@ -243,4 +321,16 @@ struct HomeWork2 {
     .backgroundColor(Color.White)
   }
 
+  @Builder
+  HeaderBuilder(title:string){
+    Row({space:10}){
+      Image($rawfile('ic_03_title.png'))
+        .width(30)
+      Text(title)
+        .fontSize(30)
+    }
+    .padding(20)
+    .backgroundColor(Color.Gray)
+    .width('100%')
+  }
 }
