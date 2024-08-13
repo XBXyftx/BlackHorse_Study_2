@@ -58,7 +58,7 @@ struct HomeWork2 {
     .height('100%')
     .width('100%')
   }
-  @State isShow:boolean=false
+  @State isShow:boolean=true
   news: News1[] = [
     { img: $rawfile('list_02_1.jpg'), text: '字节一面：TCP和UDP可以使用同一个端口号吗？', time: '2024-03-05 10:07:22' },
     { img: $rawfile('list_02_2.jpg'), text: '字节一面：TCP和UDP可以使用同一个端口号吗？', time: '2024-03-05 10:07:22' },
@@ -208,7 +208,7 @@ struct HomeWork2 {
     Column(){
       Stack({alignContent:Alignment.End}){
         Text('全部话题')
-          .fontSize(25)
+          .fontSize(35)
           .width('100%')
           .textAlign(TextAlign.Center)
           .fontWeight(800)
@@ -220,7 +220,16 @@ struct HomeWork2 {
           })
       }
       .width('100%')
-      .backgroundColor(Color.White)
+      .margin({top:20})
+
+      List(){
+
+      }
+      .width('100%')
+      .layoutWeight(1)
+
     }
+    .height('100%')
+    .backgroundColor(Color.White)
   }
 }
