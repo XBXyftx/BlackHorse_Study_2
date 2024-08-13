@@ -209,6 +209,11 @@ struct HomeWork2 {
       Stack({alignContent:Alignment.End}){
         Text('全部话题')
           .fontSize(25)
+          .width('100%')
+          .textAlign(TextAlign.Center)
+          .fontWeight(800)
+        Image($rawfile('ic_public_cancel.svg'))
+          .width(30)
       }
       .width('100%')
     }
