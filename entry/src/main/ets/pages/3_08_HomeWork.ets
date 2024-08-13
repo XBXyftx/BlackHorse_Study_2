@@ -71,7 +71,7 @@ struct HomeWork2 {
     .width('100%')
   }
 
-  @State isShow: boolean = true
+  @State isShow: boolean = false
   news: News1[] = [
     { img: $rawfile('list_02_1.jpg'), text: '字节一面：TCP和UDP可以使用同一个端口号吗？', time: '2024-03-05 10:07:22' },
     { img: $rawfile('list_02_2.jpg'), text: '字节一面：TCP和UDP可以使用同一个端口号吗？', time: '2024-03-05 10:07:22' },
