@@ -9,7 +9,6 @@ interface title {
   str: string
 }
 
-
 interface TopicItem {
   title: string,
   children?: children[]
@@ -70,7 +69,6 @@ struct HomeWork2 {
     .height('100%')
     .width('100%')
   }
-
   @State isShow: boolean = false
   news: News1[] = [
     { img: $rawfile('list_02_1.jpg'), text: '字节一面：TCP和UDP可以使用同一个端口号吗？', time: '2024-03-05 10:07:22' },
@@ -91,7 +89,6 @@ struct HomeWork2 {
     { str: '人工智能', img: $rawfile('ic_01_6.png') },
     { str: '数字产业', img: $rawfile('ic_01_7.png') }
   ]
-
   @Builder
   tabBarBuilder(text: string, num: number, message: number = 0) {
     Badge({
@@ -103,9 +100,7 @@ struct HomeWork2 {
         .fontWeight((this.index === num ? 800 : 400))
         .fontColor((this.index === 1) ? Color.White : Color.Black)
     }
-
   }
-
   @Builder
   ShouYeBuilder() {
     Column() {
@@ -170,7 +165,6 @@ struct HomeWork2 {
     .height('100%')
 
   }
-
   @Builder
   newsBuilder(img: ResourceStr, text: string, time: string) {
     Column() {
@@ -200,7 +194,6 @@ struct HomeWork2 {
         .margin({ bottom: 15 })
     }
   }
-
   @Builder
   shouYeLunBoBuilder(imgs: Resource[]) {
     Swiper() {
@@ -213,7 +206,6 @@ struct HomeWork2 {
     .autoPlay(true)
     .interval(1000)
   }
-
   imgs: Resource[] =
     [$rawfile('banner_01_1.jpg'), $rawfile('banner_01_2.jpg'), $rawfile('banner_01_3.jpg'), $rawfile('banner_01_4.jpg')]
   titles: TopicItem[] = [
@@ -283,7 +275,6 @@ struct HomeWork2 {
     { title: '元宇宙' },
     { title: '原创' }
   ]
-
   @Builder
   coverBuilder() {
     Column() {
@@ -302,7 +293,6 @@ struct HomeWork2 {
       }
       .width('100%')
       .margin({ bottom: 20, top: 20 })
-
       Stack({ alignContent: Alignment.End }) {
         List({scroller:this.ls}) {
           ForEach(this.titles, (item: TopicItem, i) => {
