@@ -1,4 +1,4 @@
-interface ContactContent {
+interface ContactContent1 {
   initial: string
   nameList: string[]
 }
@@ -6,7 +6,7 @@ interface ContactContent {
 @Entry
 @Component
 struct ContactsList {
-  contacts: ContactContent[] = [
+  contacts: ContactContent1[] = [
     { initial: 'A', nameList: ['阿猫', '阿狗', '阿虎', '阿龙', '阿鹰', '阿狼', '阿豹', '阿狮', '阿象', '阿鲸'] },
     { initial: 'B', nameList: ['白兔', '白鸽', '白鹤', '白鹭', '白狐', '白狼', '白虎', '白鹿', '白蛇', '白马'] },
     { initial: 'C', nameList: ['春花', '春风', '春雨', '春草', '春柳', '春燕', '春莺', '春蝶', '春蓝', '春绿'] },
@@ -84,7 +84,7 @@ struct ContactsList {
         .width('100%')
         .backgroundColor('#fff1f3f5')
 
-        ForEach(this.contacts, (item: ContactContent, i) => {
+        ForEach(this.contacts, (item: ContactContent1, i) => {
           ListItemGroup({ header: this.itemHead(item.initial), space: 10 }) {
             // 循环渲染分组A的ListItem
             ForEach(item.nameList, (text: string, index: number) => {
