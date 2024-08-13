@@ -214,8 +214,13 @@ struct HomeWork2 {
           .fontWeight(800)
         Image($rawfile('ic_public_cancel.svg'))
           .width(30)
+          .margin({right:20})
+          .onClick(()=>{
+            this.isShow=false
+          })
       }
       .width('100%')
+      .backgroundColor(Color.White)
     }
   }
 }
