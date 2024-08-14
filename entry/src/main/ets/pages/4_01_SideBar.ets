@@ -3,7 +3,7 @@
 struct SideBarContainer01 {
   @State isShow:boolean=false
   build() {
-    SideBarContainer(SideBarContainerType.Overlay) {
+    SideBarContainer(SideBarContainerType.Embed) {
       Column() {
         // 子组件 1：侧边容器
         //这个是侧边栏是隐藏的那部分
