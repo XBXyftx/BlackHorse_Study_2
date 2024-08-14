@@ -105,21 +105,7 @@ struct HomeWork2 {
   ShouYeBuilder() {
     Column() {
       //首页置顶栏
-      Row({ space: 20 }) {
-        Image($rawfile('hot_01.svg'))
-          .height(40)
-        Blank()
-        Image($rawfile('user_01.svg'))
-          .height(25)
-        Image($rawfile('more_01.svg'))
-          .height(25)
-          .onClick(() => {
-            this.isShow = true
-          })
-          .bindContentCover($$this.isShow, this.coverBuilder())
-      }
-      .width('100%')
-      .padding({ left: 10, right: 20 })
+      this.ShouYeZhiDingLanBuilder()
 
       Grid() {
         ForEach(this.title, (item: title, i) => {
@@ -165,6 +151,27 @@ struct HomeWork2 {
     .height('100%')
 
   }
+
+  @Builder
+  ShouYeZhiDingLanBuilder() {
+    //首页置顶栏
+    Row({ space: 20 }) {
+      Image($rawfile('hot_01.svg'))
+        .height(40)
+      Blank()
+      Image($rawfile('user_01.svg'))
+        .height(25)
+      Image($rawfile('more_01.svg'))
+        .height(25)
+        .onClick(() => {
+          this.isShow = true
+        })
+        .bindContentCover($$this.isShow, this.coverBuilder())
+    }
+    .width('100%')
+    .padding({ left: 10, right: 20 })
+  }
+
   @Builder
   newsBuilder(img: ResourceStr, text: string, time: string) {
     Column() {
