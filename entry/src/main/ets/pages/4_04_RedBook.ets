@@ -439,7 +439,7 @@ struct RedBook {
         .width('100%')
       WaterFlow() {
         ForEach(this.list,(item:WaterFlowItem,i)=>{
-          this.RedBookFlowItemBuilder(item.avatar,item.displayTitle,item.nickName,item.cover)
+          this.RedBookFlowItemBuilder(item.avatar,item.displayTitle,item.nickName,item.cover,item.likedCount)
         })
       }
       .edgeEffect(EdgeEffect.Spring)
@@ -458,7 +458,7 @@ struct RedBook {
   }
 
   @Builder
-  RedBookFlowItemBuilder(img:string,text:string,name:string,headImg:string) {
+  RedBookFlowItemBuilder(img:string,text:string,name:string,headImg:string,num:string) {
     FlowItem() {
       Column() {
         Image($r(img))
@@ -481,7 +481,7 @@ struct RedBook {
               Image($rawfile('ic_public_favor.svg'))
                 .width(15)
                 .fillColor(Color.Gray)
-              Text('xxx')
+              Text(num)
                 .fontColor(Color.Gray)
                 .fontSize(12)
             }
