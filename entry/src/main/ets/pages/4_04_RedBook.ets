@@ -1,3 +1,5 @@
+import { it } from '@ohos/hypium'
+
 interface WaterFlowItem{
   nickName:string
   avatar: string
@@ -7,7 +9,7 @@ interface WaterFlowItem{
 }
 @Entry
 @Component
-struct waterFlowDemo {
+struct RedBook {
   list: WaterFlowItem[] = [
     {
       nickName: 'RMIUC',
@@ -436,42 +438,9 @@ struct waterFlowDemo {
       Image($rawfile('ic_xhs_top.jpg'))
         .width('100%')
       WaterFlow() {
-        FlowItem() {
-          Column() {
-            Image('http://sns-webpic-qc.xhscdn.com/202403190659/d6aa1b75e0a3ae6791094663ce853653/1040g00830vfcgq9rm4004b7d5qbdlrbfts2cdmg!nc_n_webp_mw_1')
-              .width('100%')
-              .backgroundColor(Color.Gray)
-            Column({ space: 10 }) {
-              Text('标题')
-                .maxLines(2)
-                .textOverflow({ overflow: TextOverflow.Ellipsis })
-              Row() {
-                Row({ space: 5 }) {
-                  Image('https://sns-avatar-qc.xhscdn.com/avatar/63896acf9cd275d6e92d8bca.jpg')
-                    .width(20)
-                    .borderRadius(10)
-                  Text('昵称')
-                    .fontSize(12)
-                }
-
-                Row({ space: 5 }) {
-                  Image($rawfile('ic_public_favor.svg'))
-                    .width(15)
-                    .fillColor(Color.Gray)
-                  Text('xxx')
-                    .fontColor(Color.Gray)
-                    .fontSize(12)
-                }
-              }
-              .width('100%')
-              .justifyContent(FlexAlign.SpaceBetween)
-            }
-            .padding(10)
-          }
-          .borderRadius(5)
-          .clip(true)
-        }
-        .backgroundColor(Color.White)
+        ForEach(this.list,(item:WaterFlowItem,i)=>{
+          this.RedBookFlowItemBuilder(item.avatar,item.displayTitle,item.nickName,item.cover)
+        })
       }
       .edgeEffect(EdgeEffect.Spring)
       .backgroundColor('#f3f3f3')
@@ -486,5 +455,45 @@ struct waterFlowDemo {
         .width('100%')
     }
 
+  }
+
+  @Builder
+  RedBookFlowItemBuilder(img:string,text:string,name:string,headImg:string) {
+    FlowItem() {
+      Column() {
+        Image($r(img))
+          .width('100%')
+          .backgroundColor(Color.Gray)
+        Column({ space: 10 }) {
+          Text(text)
+            .maxLines(2)
+            .textOverflow({ overflow: TextOverflow.Ellipsis })
+          Row() {
+            Row({ space: 5 }) {
+              Image($r(headImg))
+                .width(20)
+                .borderRadius(10)
+              Text(name)
+                .fontSize(12)
+            }
+
+            Row({ space: 5 }) {
+              Image($rawfile('ic_public_favor.svg'))
+                .width(15)
+                .fillColor(Color.Gray)
+              Text('xxx')
+                .fontColor(Color.Gray)
+                .fontSize(12)
+            }
+          }
+          .width('100%')
+          .justifyContent(FlexAlign.SpaceBetween)
+        }
+        .padding(10)
+      }
+      .borderRadius(5)
+      .clip(true)
+    }
+    .backgroundColor(Color.White)
   }
 }
