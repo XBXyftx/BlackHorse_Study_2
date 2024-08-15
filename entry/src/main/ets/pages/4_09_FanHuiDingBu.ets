@@ -1,6 +1,6 @@
 @Entry
 @Component
-struct Index {
+struct FanHuiDingBu {
   // 默认选中 0
   @State currentIndex: number = 0
   // 动画用属性
