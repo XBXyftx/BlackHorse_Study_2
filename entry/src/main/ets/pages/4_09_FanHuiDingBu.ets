@@ -6,7 +6,7 @@ struct FanHuiDingBu {
   // 动画用属性
   @State toTopOpacity: number = 0
   @State toTopTranslateY: number = 100
-  @State homeTranslateY: number = 0
+  @State homeTranslateY: number = -25//默认向上移动
   // 控制器
   mainScroller: Scroller = new Scroller()
 
@@ -29,9 +29,11 @@ struct FanHuiDingBu {
               if (this.mainScroller.currentOffset().yOffset>300) {
                 this.toTopOpacity=1
                 this.toTopTranslateY=0
+                this.homeTranslateY=0
               }else {
                 this.toTopOpacity=0
                 this.toTopTranslateY=100
+                this.homeTranslateY=-25
               }
             })
 
@@ -147,7 +149,7 @@ struct FanHuiDingBu {
           .translate({ y: this.homeTranslateY })
         }
         .size({ width: 25, height: 25 })
-        .clip(true)
+        .clip(true)//超出容器的部分是否隐藏
 
       } else {
         Image($r('app.media.mjyp_tabbar_icon_0'))
