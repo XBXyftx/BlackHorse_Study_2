@@ -19,7 +19,8 @@ struct AnimationDemo {
         .animation({
           duration:500,//播放时间
           // delay:1000, //延迟时间
-          iterations:-1//播放次数-1为循环播放
+          iterations:-1,//播放次数-1为循环播放
+          playMode:PlayMode.Alternate
         })
       Button('修改状态变量')
         .onClick(() => {
