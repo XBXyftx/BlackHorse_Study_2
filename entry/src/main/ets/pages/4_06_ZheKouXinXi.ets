@@ -1,6 +1,6 @@
 @Entry
 @Component
-struct AnimationDemo {
+struct AnimationDemo2 {
   @State scaleX: number = 1
   @State scaleY: number = 1
 
@@ -18,11 +18,17 @@ struct AnimationDemo {
           x: this.scaleX,
           y: this.scaleY
         })
-        .animation({
+        .animation({//只能应用到上方的属性，所以scale要放在animation的上方
           duration: 1000,
           curve: Curve.Ease,
           playMode: PlayMode.Alternate,
-          iterations: -1
+          iterations: 10,
+          onFinish:(()=>{
+            console.log('动画播放结束')
+            AlertDialog.show({
+              message:'优惠没有了'
+            })
+        })
         })
         .onClick(() => {
           // 点击触发
