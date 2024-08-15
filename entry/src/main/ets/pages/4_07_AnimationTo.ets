@@ -25,18 +25,27 @@ struct AnimationDemo03 {
       // 改变位置
       Button('改变位置')
         .onClick(() => {
-          this.angle += 10
+          animateTo({
+            iterations:-1,
+            playMode:PlayMode.Alternate,
+            duration:1000
+          },()=>{
+            this.angle += 100
+          })
+
         })
 
       Button('切换动画')
         .onClick(() => {
-          this.animate = !this.animate
+          animateTo({},()=>{
+            this.animate = !this.animate
+            this.bgColor = !this.animate ? Color.Pink : '#0094ff'
+            this.translateY = !this.animate ? 1 : 100
+            this.fontColor = !this.animate ? '#0094ff' : Color.Pink
+            this.fontWeight = !this.animate ? 100 : 900
+            this.angle = !this.animate ? 0 : 135
+          })
 
-          this.bgColor = !this.animate ? Color.Pink : '#0094ff'
-          this.translateY = !this.animate ? 1 : 100
-          this.fontColor = !this.animate ? '#0094ff' : Color.Pink
-          this.fontWeight = !this.animate ? 100 : 900
-          this.angle = !this.animate ? 0 : 135
 
         })
 
