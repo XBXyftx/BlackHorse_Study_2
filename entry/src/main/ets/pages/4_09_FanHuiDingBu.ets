@@ -5,7 +5,7 @@ struct FanHuiDingBu {
   @State currentIndex: number = 0
   // 动画用属性
   @State toTopOpacity: number = 0
-  @State toTopTranslateY: number = 0
+  @State toTopTranslateY: number = 100
   @State homeTranslateY: number = 0
   // 控制器
   mainScroller: Scroller = new Scroller()
@@ -22,6 +22,20 @@ struct FanHuiDingBu {
               .backgroundColor('#0094ff')
           }
           .fullSize()
+          .onWillScroll(()=>{
+            animateTo({
+              duration:500
+            },()=>{
+              if (this.mainScroller.currentOffset().yOffset>300) {
+                this.toTopOpacity=1
+                this.toTopTranslateY=0
+              }else {
+                this.toTopOpacity=0
+                this.toTopTranslateY=100
+              }
+            })
+
+          })
 
 
           Column() {
@@ -40,6 +54,9 @@ struct FanHuiDingBu {
           .backgroundColor(Color.White)
           .borderRadius(20)
           .offset({ x: -10, y: -40 })
+          .onClick(()=>{
+            this.mainScroller.scrollEdge(Edge.Top)
+          })
 
         }
 
