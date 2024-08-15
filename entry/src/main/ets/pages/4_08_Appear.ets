@@ -13,7 +13,12 @@ struct EventDemo {
       if (this.isShow) {
         Text('我是文本')
           .width('100%')
-
+          .onAppear(()=>{
+            console.log('我出现了')
+          })
+          .onDisAppear(()=>{
+            console.log('我消失了')
+          })
       }
 
     }
