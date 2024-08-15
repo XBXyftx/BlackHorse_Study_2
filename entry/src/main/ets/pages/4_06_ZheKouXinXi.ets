@@ -30,7 +30,7 @@ struct AnimationDemo2 {
             })
         })
         })
-        .onClick(() => {
+        .onAppear(() => {
           // 点击触发
           this.scaleX = 1.3
           this.scaleY = 1.3
