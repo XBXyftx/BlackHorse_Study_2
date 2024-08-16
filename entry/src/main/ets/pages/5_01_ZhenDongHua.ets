@@ -1,21 +1,20 @@
-// xxx.ets
-import { Image } from '@kit.ArkGraphics3D'
+
 
 @Entry
 @Component
 struct ImageAnimatorExample01 {
   // 快速生成图片数组
-  // images: ImageFrameInfo[] =Array.from<string>({length:4}).map<ImageFrameInfo>((v:string,index:number)=>{
-  //   return {
-  //     src: $r(`app.media.loading_dog_${index}`),
-  //   }
-  // })
-  imgList:ImageFrameInfo[]=[
-    {src:$rawfile('loading_dog_0.png')},
-    {src:$rawfile('loading_dog_1.png')},
-    {src:$rawfile('loading_dog_2.png')},
-    {src:$rawfile('loading_dog_3.png')},
-  ]
+  imgList: ImageFrameInfo[] =Array.from<string>({length:4}).map<ImageFrameInfo>((v:string,index:number)=>{
+    return {
+      src: $r(`app.media.loading_dog_${index}`),
+    }
+  })
+  // imgList:ImageFrameInfo[]=[
+  //   {src:$rawfile('loading_dog_0.png')},
+  //   {src:$rawfile('loading_dog_1.png')},
+  //   {src:$rawfile('loading_dog_2.png')},
+  //   {src:$rawfile('loading_dog_3.png')},
+  // ]
   @State animationStatus:AnimationStatus=AnimationStatus.Initial
   build() {
     Column({ space: 10 }) {
