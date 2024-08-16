@@ -1,5 +1,3 @@
-import { it } from '@ohos/hypium'
-
 interface WaterFlowItem{
   nickName:string
   avatar: string
@@ -10,6 +8,7 @@ interface WaterFlowItem{
 @Entry
 @Component
 struct RedBook {
+  @State
   list: WaterFlowItem[] = [
     {
       nickName: 'RMIUC',
@@ -438,7 +437,7 @@ struct RedBook {
       Image($rawfile('ic_xhs_top.jpg'))
         .width('100%')
       WaterFlow() {
-        ForEach(this.list,(item:WaterFlowItem,i)=>{
+        ForEach(this.list,(item:WaterFlowItem,)=>{
           this.RedBookFlowItemBuilder(item.avatar,item.displayTitle,item.nickName,item.cover,item.likedCount)
         })
       }
@@ -461,7 +460,7 @@ struct RedBook {
   RedBookFlowItemBuilder(img:string,text:string,name:string,headImg:string,num:string) {
     FlowItem() {
       Column() {
-        Image($r(img))
+        Image(img)
           .width('100%')
           .backgroundColor(Color.Gray)
         Column({ space: 10 }) {
@@ -470,7 +469,7 @@ struct RedBook {
             .textOverflow({ overflow: TextOverflow.Ellipsis })
           Row() {
             Row({ space: 5 }) {
-              Image($r(headImg))
+              Image(headImg)
                 .width(20)
                 .borderRadius(10)
               Text(name)
