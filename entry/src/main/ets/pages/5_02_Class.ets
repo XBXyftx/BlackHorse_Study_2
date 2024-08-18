@@ -7,11 +7,14 @@ class Dog {
 
   bark() {
     console.log(this.name + '正在狗叫')
+    return '一地鸡毛'
   }
 }
 
 const dog = new Dog('大黄')
-dog.bark()
+
+const d:string=dog.bark()
+console.log(d.toString())
 
 
 @Entry
