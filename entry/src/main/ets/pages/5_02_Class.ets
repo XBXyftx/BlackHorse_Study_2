@@ -11,11 +11,12 @@ class Dog {
 }
 
 const dog = new Dog('大黄')
+dog.bark()
 
 
 @Entry
 @Component
-struct Index {
+struct Index2 {
   build() {
     Column() {
 
