@@ -23,7 +23,10 @@ console.log('',cat instanceof Animal)
 struct Index2 {
   build() {
     Column() {
-
+      Button()
+        .onClick(()=>{
+          AlertDialog.show({message:''})
+        })
     }
     .height('100%')
     .width('100%')
