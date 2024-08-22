@@ -5,6 +5,7 @@ function sum(numA: number, numB: number, ...numC: number[]) {
   }
   return numA + numB + sum
 }
+console.log(sum(1,2,3,4,5,6).toString())
 
 
 @Entry
