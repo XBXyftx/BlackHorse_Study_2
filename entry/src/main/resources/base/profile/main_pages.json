@@ -38,6 +38,10 @@
     "pages/4_08_Appear",
     "pages/4_09_FanHuiDingBu",
     "pages/5_01_ZhenDongHua",
-    "pages/5_02_Class"
+    "pages/5_02_Class",
+    "pages/5_03_static",
+    "pages/5_04_instanceOf",
+    "pages/5_05_XiuShiFu",
+    "pages/5_06_ShengYuCanShu"
   ]
 }

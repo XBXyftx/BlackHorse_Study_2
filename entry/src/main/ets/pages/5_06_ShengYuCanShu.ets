@@ -6,7 +6,10 @@ function sum(numA: number, numB: number, ...numC: number[]) {
   return numA + numB + sum
 }
 console.log(sum(1,2,3,4,5,6).toString())
-
+const nums1:number[]=[1,2,3,4,5]
+const nums2:number[]=[1,2,3,4,5]
+const total:number[]=[...nums1,...nums2]//数组合并也可以
+console.log(total.toString())
 
 @Entry
 @Component
