@@ -13,7 +13,7 @@ console.log(total.toString())
 
 @Entry
 @Component
-struct Index {
+struct Index3 {
   build() {
     Column() {
 
