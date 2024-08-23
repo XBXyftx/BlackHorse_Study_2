@@ -13,8 +13,8 @@ class Dog {
 
 const dog = new Dog('大黄')
 
-const d:string=dog.bark()//此处也调用了一次
-console.log(d.toString())
+const d2:string=dog.bark() //此处也调用了一次
+console.log(d2.toString())
 
 
 @Entry
