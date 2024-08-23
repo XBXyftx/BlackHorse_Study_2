@@ -3,7 +3,7 @@ class Animal{
 }
 
 
-class Cat extends Animal {
+class Cat2 extends Animal {
   static name1: string = ''
 
   constructor(name?:string) {
@@ -11,8 +11,8 @@ class Cat extends Animal {
   }
 }
 
-const cat2 = new Cat()
-console.log('',cat2 instanceof Cat)
+const cat2 = new Cat2()
+console.log('',cat2 instanceof Cat2)
 console.log('',cat2 instanceof Animal)
 
 
