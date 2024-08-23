@@ -20,7 +20,7 @@ console.log('',cat instanceof Animal)
 
 @Entry
 @Component
-struct Index2 {
+struct InstanceOf {
   build() {
     Column() {
       Button()
