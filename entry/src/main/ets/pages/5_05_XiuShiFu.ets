@@ -31,7 +31,7 @@ smallCar.run()
 
 @Entry
 @Component
-struct Index2 {
+struct XiuShiFu {
   build() {
     Column() {
       Button()
