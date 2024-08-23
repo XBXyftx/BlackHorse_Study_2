@@ -11,7 +11,7 @@ console.log(d)
 
 @Entry
 @Component
-struct Index2 {
+struct static1 {
   build() {
     Column() {
 

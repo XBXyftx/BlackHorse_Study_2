@@ -19,7 +19,7 @@ console.log(d.toString())
 
 @Entry
 @Component
-struct Index2 {
+struct classs {
   build() {
     Column() {
 
