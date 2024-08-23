@@ -11,9 +11,9 @@ class Cat extends Animal {
   }
 }
 
-const cat = new Cat()
-console.log('',cat instanceof Cat)
-console.log('',cat instanceof Animal)
+const cat2 = new Cat()
+console.log('',cat2 instanceof Cat)
+console.log('',cat2 instanceof Animal)
 
 
 
