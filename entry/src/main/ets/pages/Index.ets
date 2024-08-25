@@ -2,6 +2,7 @@
 @Component
 struct Index {
   build() {
+    //根组件
     Column() {
 
     }
