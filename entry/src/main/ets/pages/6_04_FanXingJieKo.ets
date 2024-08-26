@@ -8,6 +8,32 @@ let obj: IdFunc<number> = {
   ids() { return [1, 3, 5] }
 }
 
+let a:IdFunc<string> = {
+  id(value:string){
+    return value
+  },
+  ids(){
+    return ['','']
+  }
+}
+
+class PersonA604{
+  name:string
+  age:number
+  gender:boolean
+
+  constructor(name: string, age: number, gender: boolean) {
+    this.name = name
+    this.age = age
+    this.gender = gender
+  }
+
+}
+
+type APerson = Partial<PersonA604>//这个是把类的所有属性都加上问号变成可选参数
+
+type BPerson = Required<PersonA604>//这个是把类的所有属性都去除问号变成必填参数
+
 @Entry
 @Component
 struct FanXingJieKo {
