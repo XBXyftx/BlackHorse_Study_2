@@ -34,6 +34,8 @@ type APerson = Partial<PersonA604>//这个是把类的所有属性都加上问�
 
 type BPerson = Required<PersonA604>//这个是把类的所有属性都去除问号变成必填参数
 
+type CPerson = Readonly<PersonA604>//这个是把类的所有属性都变成仅读
+
 @Entry
 @Component
 struct FanXingJieKo {
