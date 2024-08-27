@@ -1,4 +1,8 @@
-
+class CatInfo{
+  name:string=''
+  age:number=0
+}
+type CatName='m'|'n'
 
 @Entry
 @Component
