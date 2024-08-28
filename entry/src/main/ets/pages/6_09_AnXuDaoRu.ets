@@ -1,4 +1,4 @@
-
+import {Cat609,ICar609,message as msg,say as sayHi}from '../models/6_09_model'
 
 @Entry
 @Component

@@ -16,4 +16,4 @@ interface ICar609{
   color:string
 }
 
-export {message,say,ICar609}
+export {Cat609,message,say,ICar609}
