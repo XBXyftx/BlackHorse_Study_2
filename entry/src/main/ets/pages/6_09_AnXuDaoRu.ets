@@ -1,5 +1,8 @@
 import {Cat609,ICar609,message as msg,say as sayHi}from '../models/6_09_model'
 
+console.log('',msg)
+console.log('',JSON.stringify(new Cat609('666')))
+
 @Entry
 @Component
 struct AnXuDaoRu {
