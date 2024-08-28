@@ -1,4 +1,7 @@
+import RobotModel from '../models/6_08_model1'
 
+const r = new RobotModel()
+r.changeBody()
 
 @Entry
 @Component
