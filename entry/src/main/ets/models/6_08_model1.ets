@@ -4,3 +4,4 @@ class Robot{
     console.log('变形',)
   }
 }
+export default Robot
