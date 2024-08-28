@@ -1,7 +1,7 @@
-import {Cat609,ICar609,message as msg,say as sayHi}from '../models/6_09_model'
-
-console.log('',msg)
-console.log('',JSON.stringify(new Cat609('666')))
+// import {Cat609,ICar609,message as msg,say as sayHi}from '../models/6_09_model'
+import * as  value from '../models/6_09_model'
+console.log('',value.message)
+console.log('',JSON.stringify(new value.Cat609('666')))
 
 @Entry
 @Component
