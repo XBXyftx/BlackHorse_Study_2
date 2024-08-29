@@ -34,6 +34,11 @@ class Student extends Person{
     this.grade = grade
   }
 
+  sayHi(): void {
+    super.sayHi()
+    console.log('',this.male,this.grade)
+  }
+
 }
 
 @Entry
