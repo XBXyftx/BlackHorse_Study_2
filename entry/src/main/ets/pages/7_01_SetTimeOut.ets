@@ -9,7 +9,7 @@ struct SetTimeOut {
         .onClick(()=>{
           setTimeout(()=>{
             !this.flag
-            console.log('计时结束',)
+            console.log('计时结束')
           },1000)
         })
 
