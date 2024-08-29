@@ -8,8 +8,9 @@ struct SetTimeOut {
       Button('点我开始计时')
         .onClick(()=>{
           setTimeout(()=>{
-            !this.flag
+            this.flag=!this.flag
             console.log('计时结束')
+            console.log('',this.flag)
           },1000)
         })
 
