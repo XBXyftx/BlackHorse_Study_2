@@ -8,10 +8,10 @@ class Person {
   age:number
   friends:string[]
 
-  constructor(name: string, age: number, friends: string[]) {
-    this.name = name
-    this.age = age
-    this.friends = friends
+  constructor(value:IPerson) {
+    this.name = value.name
+    this.age = value.age
+    this.friends = value.friends
   }
   sayHi(){
     console.log('',this.name,this.age,this.friends)
@@ -29,7 +29,7 @@ class Student extends Person{
   grade:string
 
   constructor(value:IStudent, male: StudentMale, grade: string) {
-    super(value.name, value.age, value.friends)
+    super(value)
     this.male = male
     this.grade = grade
   }
