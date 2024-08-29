@@ -14,9 +14,7 @@ struct SetTimeOut {
         })
 
       if (this.flag){
-        Row(){
-
-        }
+        Row(){}
         .backgroundColor(Color.Red)
         .width(100)
         .height(100)
