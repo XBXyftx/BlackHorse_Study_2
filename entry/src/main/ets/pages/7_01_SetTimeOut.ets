@@ -4,7 +4,7 @@ struct SetTimeOut {
   @State flag:boolean=false
   build() {
     //根组件
-    Column() {
+    Column({space:10}) {
       Button('点我开始计时')
         .onClick(()=>{
           setTimeout(()=>{
