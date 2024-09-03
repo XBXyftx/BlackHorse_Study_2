@@ -24,7 +24,7 @@ enum StudentMale{
 interface IStudent extends IPerson{
 
 }
-class Student extends Person{
+class Student610 extends Person{
   male:StudentMale
   grade:string
 
