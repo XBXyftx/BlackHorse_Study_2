@@ -51,6 +51,11 @@
     "pages/6_05_RecordYingShe",
     "pages/6_06_Empty",
     "pages/6_07_Empty02",
-    "pages/6_08_MoRenDaoChu"
+    "pages/6_08_MoRenDaoChu",
+    "pages/6_09_AnXuDaoRu",
+    "pages/6_10_Test",
+    "pages/7_01_SetTimeOut",
+    "pages/7_02_SetIntervalSheZhiDaoJiShi",
+    "pages/7_03_LoginDemo"
   ]
 }
