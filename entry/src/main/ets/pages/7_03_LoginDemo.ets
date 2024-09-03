@@ -19,6 +19,10 @@ struct LoginDemo {
             setTimeout(() => {
               const code = Math.floor(1000 + Math.random() * 9000)
               console.log('验证码', code)
+              AlertDialog.show({
+                title: '验证码',
+                message: `您的验证码是${code}`,
+              })
             }, 2000)
           })
       }
