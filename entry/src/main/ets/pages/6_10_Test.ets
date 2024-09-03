@@ -3,7 +3,7 @@ interface IPerson{
   age:number
   friends:string[]
 }
-class Person {
+class Person610 {
   name:string
   age:number
   friends:string[]
@@ -19,12 +19,12 @@ class Person {
 }
 enum StudentMale{
   Boy='男孩',
-  Girl='女孩'
+  Girl610='女孩'
 }
 interface IStudent extends IPerson{
 
 }
-class Student610 extends Person{
+class Student610 extends Person610{
   male:StudentMale
   grade:string
 
