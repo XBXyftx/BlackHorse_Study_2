@@ -1,6 +1,7 @@
 @Entry
 @Component
 struct LoginDemo {
+  @State time:number = 0
   build() {
     Column() {
       this.titleBuilder()
