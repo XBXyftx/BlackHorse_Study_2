@@ -16,19 +16,25 @@ struct LoginDemo {
           .fontSize(14)
           .fontColor(Color.Gray)
           .onClick(() => {
-            console.log('发送验证码')
-            setTimeout(() => {
-              const code = Math.floor(1000 + Math.random() * 9000)
-              console.log('验证码', code)
-              AlertDialog.show({
-                title: '验证码',
-                message: `您的验证码是${code}`,
-              })
-            }, 2000)
-            this.time=60
-            setInterval(()=>{
-              this.time--
-            },1000)
+            if (this.time===0){
+              console.log('发送验证码')
+              setTimeout(() => {
+                const code = Math.floor(1000 + Math.random() * 9000)
+                console.log('验证码', code)
+                AlertDialog.show({
+                  title: '验证码',
+                  message: `您的验证码是${code}`,
+                })
+              }, 2000)
+              this.time=60
+              const id = setInterval(()=>{
+                this.time--
+                if (this.time===0){
+                  clearInterval(id)
+                }
+              },1000)
+            }
+
           })
       }
       .width('100%')
