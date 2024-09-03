@@ -25,9 +25,10 @@ struct LoginDemo {
                 message: `您的验证码是${code}`,
               })
             }, 2000)
+            this.time=60
             setInterval(()=>{
-              this.time=60
-            },6000)
+              this.time--
+            },1000)
           })
       }
       .width('100%')
