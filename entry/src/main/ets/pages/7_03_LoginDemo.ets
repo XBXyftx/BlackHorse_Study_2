@@ -12,7 +12,7 @@ struct LoginDemo {
         TextInput({ placeholder: '请输入验证码' })
           .textInputExtend()
           .layoutWeight(1)
-        Text('发送验证码')
+        Text(this.time===0?'发送验证码':`${this.time}秒后获取`)
           .fontSize(14)
           .fontColor(Color.Gray)
           .onClick(() => {
@@ -25,6 +25,9 @@ struct LoginDemo {
                 message: `您的验证码是${code}`,
               })
             }, 2000)
+            setInterval(()=>{
+              this.time=60
+            },6000)
           })
       }
       .width('100%')
