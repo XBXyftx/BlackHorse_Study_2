@@ -46,17 +46,20 @@ const foodData: Food[] = [
   }
 ]
 
-function getFoods(foods: Food[]):string[] {
+function getFoods(foods: Food[]): string[] {
+
   const totalFoods: string [] = []
 
-  const func = (foods:Food[])=>{
-    for(let i=0;i>foods.length;i++){
-      if(foods[i].info!=undefined){
+  const func = (foods: Food[]) => {
+    for (let i = 0; i < foods.length; i++) {
+      if (foods[i].info != undefined) {
+        // console.log('totalFoods', totalFoods)
         //有info就展开info
-        totalFoods.push(...foods[i].info!)//展开和非空断言
+        totalFoods.push(...foods[i].info!) //展开和非空断言
+
       }
 
-      if (foods[i].children!=undefined) {
+      if (foods[i].children != undefined) {
         //有children就展开继续找info
         const child = foods[i].children!
         for (let index = 0; index < foods[i].children!.length; index++) {
@@ -69,13 +72,16 @@ function getFoods(foods: Food[]):string[] {
     }
   }
   func(foods)
-
+  // console.log('totalFoods',totalFoods)
   return totalFoods
 }
 
+getFoods(foodData)
+
 // 所有 info 的数据[...]
 // console.log('', getFoods(foodData))
-AlertDialog.show({message:getFoods(foodData).toString()+'A'})
+AlertDialog.show({ message: getFoods(foodData).toString() + 'A' })
+
 @Entry
 @Component
 struct ShuJuBianPingHua {
