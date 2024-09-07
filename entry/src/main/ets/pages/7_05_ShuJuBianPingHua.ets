@@ -74,8 +74,8 @@ function getFoods(foods: Food[]):string[] {
 }
 
 // 所有 info 的数据[...]
-console.log('', getFoods(foodData))
-
+// console.log('', getFoods(foodData))
+AlertDialog.show({message:getFoods(foodData).toString()})
 @Entry
 @Component
 struct ShuJuBianPingHua {
