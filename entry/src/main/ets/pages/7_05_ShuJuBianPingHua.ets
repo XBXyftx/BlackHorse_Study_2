@@ -55,17 +55,15 @@ function getFoods(foods: Food[]): string[] {
       if (foods[i].info != undefined) {
         //有info就展开info
         totalFoods.push(...foods[i].info!) //展开和非空断言
-
       }
       if (foods[i].children != undefined) {
         //有children就展开继续找info
         const child = foods[i].children!
+        func(child)
         // for (let index = 0; index < foods[i].children!.length; index++) {
         //   if (child[index]!.info != undefined) {
         //     totalFoods.push(...child[index].info!)
         //   }
-        func(child)
-
         // }
       }
     }
