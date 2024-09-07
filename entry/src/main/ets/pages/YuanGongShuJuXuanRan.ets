@@ -80,8 +80,13 @@ const treeData: Department[] = [
 
 function getEmployeeList(departmentList: Department[]): Employee[] {
   let employeeList: Employee[] = []
+  for (let index = 0; index < departmentList.length; index++) {
+    const element = departmentList[index];
+    if(element.employees){
+      
+    }
 
-  // 补全剩余代码
+  }
 
 
   return employeeList
