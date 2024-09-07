@@ -49,29 +49,32 @@ const foodData: Food[] = [
 function getFoods(foods: Food[]):string[] {
   const totalFoods: string [] = []
 
-  const func = ()=>{
+  const func = (foods:Food[])=>{
     for(let i=0;i>foods.length;i++){
       if(foods[i].info!=undefined){
         //有info就展开info
         totalFoods.push(...foods[i].info!)//展开和非空断言
       }
+
       if (foods[i].children!=undefined) {
         //有children就展开继续找info
+        const child = foods[i].children!
         for (let index = 0; index < foods[i].children!.length; index++) {
-          if (foods[i]!.children[index].info != undefined) {
-
+          if (child[index]!.info != undefined) {
+            totalFoods.push(...child[index].info!)
           }
 
         }
       }
     }
   }
-  func()
+  func(foods)
 
   return totalFoods
 }
 
-getFoods(foodData) // 所有 info 的数据[...]
+// 所有 info 的数据[...]
+console.log('', getFoods(foodData))
 
 @Entry
 @Component
