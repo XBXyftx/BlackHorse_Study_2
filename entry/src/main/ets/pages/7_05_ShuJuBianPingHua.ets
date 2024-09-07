@@ -48,8 +48,11 @@ const foodData: Food[] = [
 
 function getFoods(foods: Food[]):string[] {
   const totalFoods: string [] = []
-
-  // 代码补全位置
+  for(let i=0;i>foods.length;i++){
+    if(foods[i].info!=undefined){
+      totalFoods.push(...foods[i].info!)//展开和非空断言
+    }
+  }
 
   return totalFoods
 }
