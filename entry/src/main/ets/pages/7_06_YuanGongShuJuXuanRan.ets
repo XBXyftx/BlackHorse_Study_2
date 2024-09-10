@@ -112,15 +112,15 @@ struct YuanGongShuJuXuanRan {
         ForEach(this.list,(item:Employee,i:number)=>{
           ListItem() {
             Row({ space: 10 }) {
-              Image($r('app.media.user_06'))
+              Image(item.avatar)
                 .width(40)
                 .height(40)
                 .borderRadius(20)
-              Text('Lucy')
+              Text(item.username)
                 .fontWeight(900)
-              Text('1990-02-02')
+              Text(item.birth.toString())
                 .fontWeight(900)
-              Text('女')
+              Text(item.gender)
                 .fontWeight(900)
             }
             .width('100%')
