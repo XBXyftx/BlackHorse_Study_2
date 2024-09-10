@@ -80,16 +80,19 @@ const treeData: Department[] = [
 
 function getEmployeeList(departmentList: Department[]): Employee[] {
   let employeeList: Employee[] = []
-  for (let index = 0; index < departmentList.length; index++) {
-    const element = departmentList[index];
-    if(element.employees){
-      employeeList.push(...element.employees!)
-    }
-    if (element.children) {
-      getEmployeeList(element.children)
-    }
+  const func=(departmentList: Department[])=>{
+    for (let index = 0; index < departmentList.length; index++) {
+      const element = departmentList[index];
+      if(element.employees){
+        employeeList.push(...element.employees!)
+      }
+      if (element.children) {
+        func(element.children)
+      }
 
+    }
   }
+
   return employeeList
 }
 
