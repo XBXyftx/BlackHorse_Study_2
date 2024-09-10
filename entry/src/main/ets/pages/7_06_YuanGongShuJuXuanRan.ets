@@ -92,6 +92,7 @@ function getEmployeeList(departmentList: Department[]): Employee[] {
 
     }
   }
+  func(departmentList)
 
   return employeeList
 }
@@ -107,23 +108,27 @@ struct YuanGongShuJuXuanRan {
       Text('本公司所有员工')
         .titleStyle()
       List({ space: 10 }) {
-        ListItem() {
-          Row({ space: 10 }) {
-            Image($r('app.media.user_06'))
-              .width(40)
-              .height(40)
-              .borderRadius(20)
-            Text('Lucy')
-              .fontWeight(900)
-            Text('1990-02-02')
-              .fontWeight(900)
-            Text('女')
-              .fontWeight(900)
+
+        ForEach(this.list,(item:Employee,i:number)=>{
+          ListItem() {
+            Row({ space: 10 }) {
+              Image($r('app.media.user_06'))
+                .width(40)
+                .height(40)
+                .borderRadius(20)
+              Text('Lucy')
+                .fontWeight(900)
+              Text('1990-02-02')
+                .fontWeight(900)
+              Text('女')
+                .fontWeight(900)
+            }
+            .width('100%')
+            .justifyContent(FlexAlign.Start)
           }
-          .width('100%')
-          .justifyContent(FlexAlign.Start)
-        }
-        .listStyle()
+          .listStyle()
+        })
+
 
       }
       .padding(20)
