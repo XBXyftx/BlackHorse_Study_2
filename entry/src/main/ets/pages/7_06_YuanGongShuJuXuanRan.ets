@@ -83,12 +83,13 @@ function getEmployeeList(departmentList: Department[]): Employee[] {
   for (let index = 0; index < departmentList.length; index++) {
     const element = departmentList[index];
     if(element.employees){
-      
+      employeeList.push(...element.employees!)
+    }
+    if (element.children) {
+      getEmployeeList(element.children)
     }
 
   }
-
-
   return employeeList
 }
 
