@@ -3,11 +3,17 @@
 struct Date01 {
   date = new Date()
   @State year:number = this.date.getFullYear()
+  @State month:number = this.date.getMonth()+1
+  @State date1:number = this.date.getDate()
+  @State hour:number = this.date.getHours()
+  @State minute:number = this.date.getMinutes()
+  @State second:number = this.date.getSeconds()
+  @State day:number = this.date.getDay()
 
   build() {
     Column() {
       Column() {
-        Text('2024年 3 月 24 日 周日')
+        Text(`${this.year}年 ${this.month} 月 ${this.date} 日 周`)
           .fontColor(Color.White)
           .fontSize(20)
         Stack() {
