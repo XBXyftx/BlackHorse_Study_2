@@ -60,13 +60,13 @@ struct Date01 {
       .onAppear(() => {
         setInterval(() => {
           const date = new Date()
-          this.year = this.date.getFullYear()
-          this.month = this.date.getMonth() + 1
-          this.date1 = this.date.getDate()
-          this.hour = this.date.getHours()
-          this.minute = this.date.getMinutes()
-          this.second = this.date.getSeconds()
-          this.day = this.date.getDay()
+          this.year = date.getFullYear()
+          this.month = date.getMonth() + 1
+          this.date1 = date.getDate()
+          this.hour = date.getHours()
+          this.minute = date.getMinutes()
+          this.second = date.getSeconds()
+          this.day = date.getDay()
         }, 100)
       })
 
