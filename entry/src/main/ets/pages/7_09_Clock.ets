@@ -1,6 +1,9 @@
 @Entry
 @Component
 struct Date01 {
+  date = new Date()
+  @State year:number = this.date.getFullYear()
+
   build() {
     Column() {
       Column() {
