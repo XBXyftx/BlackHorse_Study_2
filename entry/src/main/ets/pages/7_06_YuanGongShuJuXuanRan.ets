@@ -102,7 +102,7 @@ function getEmployeeList(departmentList: Department[]): Employee[] {
 @Component
 struct YuanGongShuJuXuanRan {
   list: Employee[] = getEmployeeList(treeData)
-
+  date=new Date()
   build() {
     Column() {
       Text('本公司所有员工')
@@ -118,7 +118,7 @@ struct YuanGongShuJuXuanRan {
                 .borderRadius(20)
               Text(item.username)
                 .fontWeight(900)
-              Text(item.birth.toString())
+              Text(`${new Date(item.birth).getFullYear().toString()}-${new Date(item.birth).getMonth().toString()}-${new Date(item.birth).getDate().toString()}`)
                 .fontWeight(900)
               Text(item.gender)
                 .fontWeight(900)
