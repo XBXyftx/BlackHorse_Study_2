@@ -39,11 +39,11 @@ struct Date01 {
           .fontSize(20)
         Stack() {
           Row({ space: 10 }) {
-            Text(this.hour.toString())
+            Text(this.hour<10?`0${this.hour}`:this.hour.toString())
               .textStyle()
-            Text(this.minute.toString())
+            Text(this.minute<10?`0${this.minute}`:this.minute.toString())
               .textStyle()
-            Text(this.second.toString())
+            Text(this.second<10?`0${this.second}`:this.second.toString())
               .textStyle()
           }
 
