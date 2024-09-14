@@ -1,9 +1,20 @@
+import App from '@system.app'
+
 const apps:string[]=['1','2','3']
 const a = apps.map((item)=>{//与foreach不同的点在于可以return
   console.log('',item)
   return parseInt(item)*2
 })
 console.log(a.toString())
+
+const s = apps.filter((item:string)=>{
+  if (parseInt(item)>1) {
+    return true
+  }else {
+    return false
+  }
+})
+console.log(s.toString())
 
 
 @Entry
