@@ -32,7 +32,7 @@ struct OpenAD {
             .onClick(() => {
               clearInterval(this.cid)
               this.isShow = !this.isShow
-              animateTo({duration:2000},()=>{
+              animateTo({duration:1000},()=>{
                 this.op = 0
               })
             })
@@ -43,7 +43,7 @@ struct OpenAD {
                 } else {
                   clearInterval(this.cid)
                   this.isShow = !this.isShow
-                  animateTo({duration:2000},()=>{
+                  animateTo({duration:1000},()=>{
                     this.op = 0
                   })
                 }
