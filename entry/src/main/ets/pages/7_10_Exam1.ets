@@ -1,9 +1,13 @@
+import { message } from '../models/6_09_model'
+
 @Entry
 @Component
 struct OpenAD {
-  @State time:number = 5
-  @State isShow:boolean = true
-  private cid:number=-1;
+  @State time: number = 5
+  @State isShow: boolean = true
+  private cid: number = -1
+  @State op: number = 1
+
   build() {
     Stack() {
       Column() {
@@ -11,8 +15,13 @@ struct OpenAD {
           .width('100%')
       }
       .fullSize()
+      .onClick(()=>{
+        AlertDialog.show({
+          message:'a'
+        })
+      })
 
-      if (this.isShow){
+      if (this.isShow) {
         Stack({ alignContent: Alignment.Top }) {
           Image($r('app.media.open_ad'))
             .width('100%')
@@ -20,23 +29,30 @@ struct OpenAD {
             .textExtend()
             .position({ x: '100%', y: 40 })
             .translate({ x: -80 })
-            .onClick(()=>{
+            .onClick(() => {
               clearInterval(this.cid)
-              this.isShow=!this.isShow
+              this.isShow = !this.isShow
+              animateTo({duration:2000},()=>{
+                this.op = 0
+              })
             })
-            .onAppear(()=>{
-              this.cid = setInterval(()=>{
-                if (this.time>0) {
+            .onAppear(() => {
+              this.cid = setInterval(() => {
+                if (this.time > 0) {
                   this.time--
-                }else {
+                } else {
                   clearInterval(this.cid)
-                  this.isShow=!this.isShow
+                  this.isShow = !this.isShow
+                  animateTo({duration:2000},()=>{
+                    this.op = 0
+                  })
                 }
-              },1000)
+              }, 1000)
             })
         }
         .fullSize()
         .backgroundColor('#fefefe')
+        .opacity(this.op)
       }
 
     }
@@ -54,7 +70,12 @@ struct OpenAD {
 function textExtend() {
   .backgroundColor(Color.Gray)
   .fontSize(10)
-  .padding({ top: 8, bottom: 8, left: 20, right: 20 })
+  .padding({
+    top: 8,
+    bottom: 8,
+    left: 20,
+    right: 20
+  })
   .fontColor(Color.White)
   .borderRadius(15)
 }
