@@ -4,7 +4,12 @@ const str = foods.join()
 console.log('',str)
 const str2 = foods.join('~|~')//间隔符
 console.log('',str2)
-
+foods.forEach((item:string,i)=>{
+  console.log(item+'  '+i+'')
+})
+foods.forEach(item=>{
+  console.log(item)
+})
 
 
 
