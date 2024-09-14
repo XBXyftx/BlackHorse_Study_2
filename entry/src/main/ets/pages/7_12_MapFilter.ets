@@ -7,7 +7,7 @@ const a = apps.map((item)=>{//与foreach不同的点在于可以return
 })
 console.log(a.toString())
 
-const s = apps.filter((item:string)=>{
+const s = apps.filter((item:string)=>{//筛选符合条件的生成新数组
   if (parseInt(item)>1) {
     return true
   }else {
