@@ -1,5 +1,5 @@
 const apps:string[]=['1','2','3']
-const a = apps.map((item)=>{
+const a = apps.map((item)=>{//与foreach不同的点在于可以return
   console.log('',item)
   return 66
 })
