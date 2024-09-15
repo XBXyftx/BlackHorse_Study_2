@@ -1,3 +1,4 @@
+import { it } from '@ohos/hypium'
 import App from '@system.app'
 
 const apps:string[]=['1','2','3']
@@ -8,13 +9,14 @@ const apps:string[]=['1','2','3']
 const a = apps.map((item)=>parseInt(item)*2)
 console.log(a.toString())
 
-const s = apps.filter((item:string)=>{//筛选符合条件的生成新数组
-  if (parseInt(item)>1) {
-    return true
-  }else {
-    return false
-  }
-})
+// const s = apps.filter((item:string)=>{//筛选符合条件的生成新数组
+//   if (parseInt(item)>1) {
+//     return true
+//   }else {
+//     return false
+//   }
+// })
+const s = apps.filter(item=>parseInt(item)>1)
 console.log(s.toString())
 
 
