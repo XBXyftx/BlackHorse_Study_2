@@ -1,10 +1,11 @@
 import App from '@system.app'
 
 const apps:string[]=['1','2','3']
-const a = apps.map((item)=>{//与foreach不同的点在于可以return
-  console.log('',item)
-  return parseInt(item)*2
-})
+// const a = apps.map((item)=>{//与foreach不同的点在于可以return
+//   console.log('',item)
+//   return parseInt(item)*2
+// })
+const a = apps.map((item)=>parseInt(item)*2)
 console.log(a.toString())
 
 const s = apps.filter((item:string)=>{//筛选符合条件的生成新数组
