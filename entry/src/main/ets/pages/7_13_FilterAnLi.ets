@@ -1,5 +1,6 @@
 // filter基本使用 01 - 筛选出大于 5 的数
 const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+console.log(nums.filter(item=>item>5).toString())
 
 // filter基本使用 02 - 筛选出价格大于 5 的食物
 interface FoodInfo {
@@ -25,7 +26,7 @@ const foods: FoodInfo[] = [
     price: 1
   }
 ]
-
+console.info(JSON.stringify(foods.filter(item=>item.price>5)))
 interface HeroInfo {
   id: number
   name: string
@@ -106,7 +107,7 @@ const arr: HeroInfo[] = [
 @Component
 struct Func3 {
   filterList: string[] = ['全部', '战士', '法师', '坦克', '刺客', '射手', '辅助']
-
+  @State selectType:string='全部'
   build() {
     Column() {
       Row() {
@@ -114,11 +115,14 @@ struct Func3 {
           Text(item)
             .border({
               width: { bottom: 2 },
-              color: index == 0 ? Color.Orange : Color.Transparent
+              color: item == this.selectType ? Color.Orange : Color.Transparent
             })
             .padding({ bottom: 3 })
-            .fontColor(index == 0 ? Color.Orange : Color.Black)
-            .fontSize(index == 0 ? 18 : 13)
+            .fontColor(item == this.selectType ? Color.Orange : Color.Black)
+            .fontSize(item == this.selectType ? 18 : 13)
+            .onClick(()=>{
+              this.selectType=item
+            })
         })
       }
       .width('100%')
