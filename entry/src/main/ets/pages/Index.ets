@@ -1,60 +1,53 @@
+// xxx.ets
 @Entry
 @Component
-struct ActionSheetExample {
+struct TimePickerDialogExample {
+  private selectTime: Date = new Date()
+
   build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
-      Button('Click to Show ActionSheet')
+    Column() {
+      Button("TimePickerDialog 24小时制")
+        .margin(20)
         .onClick(() => {
-          ActionSheet.show({ // 建议使用 this.getUIContest().showActionSheet()接口
-            title: 'ActionSheet title',
-            subtitle: 'ActionSheet subtitle',
-            message: 'message',
-            autoCancel: true,
-            confirm: {
-              defaultFocus: true,
-              value: 'Confirm button',
-              action: () => {
-                console.log('Get Alert Dialog handled')
+          TimePickerDialog.show({
+            selected: this.selectTime,
+            useMilitaryTime: true,
+            disappearTextStyle: { color: Color.Red, font: { size: 15, weight: FontWeight.Lighter } },
+            textStyle: { color: Color.Black, font: { size: 20, weight: FontWeight.Normal } },
+            selectedTextStyle: { color: Color.Blue, font: { size: 30, weight: FontWeight.Bolder } },
+            acceptButtonStyle: { type: ButtonType.Normal, style: ButtonStyleMode.NORMAL, role: ButtonRole.NORMAL, fontColor: Color.Red,
+              fontSize: '26fp', fontWeight: FontWeight.Bolder, fontStyle: FontStyle.Normal, fontFamily: 'sans-serif', backgroundColor:'#80834511',
+              borderRadius: 20 },
+            cancelButtonStyle: { type: ButtonType.Normal, style: ButtonStyleMode.NORMAL, role: ButtonRole.NORMAL, fontColor: Color.Blue,
+              fontSize: '16fp', fontWeight: FontWeight.Normal, fontStyle: FontStyle.Italic, fontFamily: 'sans-serif', backgroundColor:'#50182431',
+              borderRadius: 10 },
+            onAccept: (value: TimePickerResult) => {
+              if (value.hour != undefined && value.minute != undefined) {
+                this.selectTime.setHours(value.hour, value.minute)
+                console.info("TimePickerDialog:onAccept()" + JSON.stringify(value))
               }
             },
-            cancel: () => {
-              console.log('actionSheet canceled')
+            onCancel: () => {
+              console.info("TimePickerDialog:onCancel()")
             },
-            onWillDismiss:(dismissDialogAction: DismissDialogAction)=> {
-              console.info("reason=" + JSON.stringify(dismissDialogAction.reason))
-              console.log("dialog onWillDismiss")
-              if (dismissDialogAction.reason == DismissReason.PRESS_BACK) {
-                dismissDialogAction.dismiss()
-              }
-              if (dismissDialogAction.reason == DismissReason.TOUCH_OUTSIDE) {
-                dismissDialogAction.dismiss()
-              }
+            onChange: (value: TimePickerResult) => {
+              console.info("TimePickerDialog:onChange()" + JSON.stringify(value))
             },
-            alignment: DialogAlignment.Bottom,
-            offset: { dx: 0, dy: -10 },
-            sheets: [
-              {
-                title: 'apples',
-                action: () => {
-                  console.log('apples')
-                }
-              },
-              {
-                title: 'bananas',
-                action: () => {
-                  console.log('bananas')
-                }
-              },
-              {
-                title: 'pears',
-                action: () => {
-                  console.log('pears')
-                }
-              }
-            ]
+            onDidAppear: () => {
+              console.info("TimePickerDialog:onDidAppear()")
+            },
+            onDidDisappear: () => {
+              console.info("TimePickerDialog:onDidDisappear()")
+            },
+            onWillAppear: () => {
+              this.selectTime = new Date()
+              console.info("TimePickerDialog:onWillAppear()")
+            },
+            onWillDisappear: () => {
+              console.info("TimePickerDialog:onWillDisappear()")
+            }
           })
         })
     }.width('100%')
-    .height('100%')
   }
 }
