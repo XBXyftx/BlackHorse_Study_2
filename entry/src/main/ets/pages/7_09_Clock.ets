@@ -49,9 +49,9 @@ struct Date01 {
               .textStyle()
           }
 
-          Divider()
-            .strokeWidth(2)
-            .color(Color.Black)
+          // Divider()
+          //   .strokeWidth(2)
+          //   .color(Color.Black)
         }
         .padding(10)
 
