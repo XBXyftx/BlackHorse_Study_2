@@ -33,6 +33,8 @@ struct Date01 {
 
   build() {
     Column() {
+      Image($rawfile('BistuMaker.png'))
+        .width('100%')
       Column() {
         Text(`${this.year}年 ${this.month} 月 ${this.date1} 日 周${this.fu(this.day)}`)
           .fontColor(Color.White)
@@ -69,8 +71,12 @@ struct Date01 {
           this.day = date.getDay()
         }, 100)
       })
-
+      Image($rawfile('ChuangKe.png'))
+        .width('80%')
     }
+    .expandSafeArea()
+    .backgroundImage($rawfile('starSky.jpg'))
+    .backgroundImageSize({height:'100%'})
     .width('100%')
     .height('100%')
     .backgroundColor(Color.Black)
