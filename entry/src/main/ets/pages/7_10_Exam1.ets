@@ -51,6 +51,7 @@ struct OpenAD {
             })
         }
         .fullSize()
+        .transition(TransitionEffect.OPACITY.animation({curve: Curve.Ease }))
         .backgroundColor('#fefefe')
         .opacity(this.op)
       }
