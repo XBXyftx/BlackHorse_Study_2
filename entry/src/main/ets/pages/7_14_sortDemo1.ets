@@ -1,8 +1,8 @@
 // 数值数组排序
 const arr = [5, 12, 8, 130, 44]
 
-console.log(arr.sort((a,b)=>{return b-a}).toString())
-
+console.log(arr.sort((a,b)=>{return b-a}).toString())//排序
+console.log(arr.reduce((a,b)=>{return a+b}).toString())//求和
 interface Food{
   name:string
   price:number
