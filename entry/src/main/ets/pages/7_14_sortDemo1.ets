@@ -32,6 +32,10 @@ console.log(JSON.stringify(foods.sort((a,b)=>{
 })))
 console.log(JSON.stringify(foods.reduce((a:number,b:Food)=>{return a+b.price},0)))
 
+const app:string = 'appPP'
+console.log(app.toUpperCase())
+console.log(app.toLowerCase())
+
 @Entry
 @Component
 struct SortPage {
