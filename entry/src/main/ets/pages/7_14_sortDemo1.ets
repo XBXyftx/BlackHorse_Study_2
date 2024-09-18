@@ -36,6 +36,9 @@ const app:string = 'appPP'
 console.log(app.toUpperCase())
 console.log(app.toLowerCase())
 
+const a:string=' b  aa     '
+console.log(a.trim())//去除字符串两边的空格但是字符串中间的不会消除
+
 @Entry
 @Component
 struct SortPage {
