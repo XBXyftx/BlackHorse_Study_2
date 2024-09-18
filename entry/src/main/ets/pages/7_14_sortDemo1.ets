@@ -27,6 +27,10 @@ const foods:Food[] = [
     price: 1
   }
 ]
+console.log(JSON.stringify(foods.sort((a,b)=>{
+  return a.price-b.price
+})))
+console.log(JSON.stringify(foods.reduce((a:number,b:Food)=>{return a+b.price},0)))
 
 @Entry
 @Component
