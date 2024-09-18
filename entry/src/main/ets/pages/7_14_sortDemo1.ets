@@ -1,6 +1,8 @@
 // 数值数组排序
 const arr = [5, 12, 8, 130, 44]
 
+console.log(arr.sort((a,b)=>{return b-a}).toString())
+
 interface Food{
   name:string
   price:number
@@ -29,7 +31,6 @@ const foods:Food[] = [
 @Entry
 @Component
 struct SortPage {
-
   build() {
 
   }
