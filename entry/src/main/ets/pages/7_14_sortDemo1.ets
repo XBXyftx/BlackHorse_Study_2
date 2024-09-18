@@ -38,6 +38,9 @@ console.log(app.toLowerCase())
 
 const a:string=' b  aa     '
 console.log(a.trim())//去除字符串两边的空格但是字符串中间的不会消除
+const sentence = 'The quick brown fox jumps over the lazy dog.';
+const isIncluded: boolean = sentence.includes('fox')//寻找是否存在某一关键字
+console.log(isIncluded.toString())
 
 @Entry
 @Component
