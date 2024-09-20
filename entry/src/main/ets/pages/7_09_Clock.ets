@@ -74,6 +74,7 @@ struct Date01 {
       Image($rawfile('ChuangKe.png'))
         .width('80%')
     }
+
     .expandSafeArea()
     .backgroundImage($rawfile('starSky.jpg'))
     .backgroundImageSize({height:'100%'})
