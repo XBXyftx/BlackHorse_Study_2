@@ -17,6 +17,7 @@ struct Alphabe {
         .usingPopup(true)
         .popupColor(Color.Orange)
         .popupItemBackgroundColor(Color.Red)
+        .selectedFont({size:15})
       Text('当前索引值为:'+this.selectedIndex)
         .width('80%')
     }
