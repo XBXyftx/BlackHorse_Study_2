@@ -11,6 +11,11 @@ struct Index {
         .onClick(()=>{
           this.info=':)'
         })
+
+      TextInput({placeholder:'请输入用户名',text:$$this.info})
+        .backgroundColor(Color.Blue)
+        .type(InputType.Password)
+        .placeholderColor(Color.Red)
     }
     .padding(10)
     .width('100%')
