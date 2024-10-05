@@ -24,6 +24,9 @@ struct XMYP_Login {
               .border({ width: { bottom: .5 }, color: '#ccc' })
               .padding(0)
               .height(48)
+              .onChange((item:string)=>{
+                this.userName=item
+              })
 
             TextInput({ placeholder: '密码' })
               .placeholderColor('#ccc')
@@ -36,6 +39,9 @@ struct XMYP_Login {
                 //眼睛样式
                 offIconSrc: $r('app.media.ic_eyes_open'),
                 onIconSrc: $r('app.media.ic_eyes_close'),
+              })
+              .onChange((item:string)=>{
+                this.password=item
               })
 
           }
@@ -66,7 +72,22 @@ struct XMYP_Login {
                 return
               }
               //2.用户名密码是否为空
+              if (this.userName.trim() == '') {
+                AlertDialog.show({
+                  message:'用户名不能为空'
+                })
+                return
+              }
+              if (this.password.trim() == '') {
+                AlertDialog.show({
+                  message:'密码不能为空'
+                })
+                return
+              }
 
+              AlertDialog.show({
+                message:'登陆成功'
+              })
             })
 
           Row() {
