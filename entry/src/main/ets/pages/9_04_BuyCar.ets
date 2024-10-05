@@ -115,15 +115,9 @@ struct CartPage {
           .onChange((res) => {
             console.log(JSON.stringify(res))
             this.selectedIDS = res.name.map(id => parseInt(id))
-            this.totalPrice = parseInt(this.goodList.filter((item: GoodInfo) => {
-              if (this.selectedIDS.includes(item.id)) {
-                return true
-              } else {
-                return false
-              }
-            }).reduce((pre: number, item: GoodInfo) => {
-              return pre + item.price * item.count
-            },0).toFixed(2))
+            this.totalPrice = parseInt(this.goodList.filter(item => this.selectedIDS.includes(item.id))
+              .reduce((pre: number, item: GoodInfo) => pre + item.price * item.count, 0)
+              .toFixed(2))
 
           })
 
