@@ -1,7 +1,7 @@
 @Entry
 @Component
 struct XMYP_Login {
-
+@State isSelected:boolean=false
   build() {
     Column() {
       // 1. 顶部
@@ -53,6 +53,14 @@ struct XMYP_Login {
             .backgroundColor('#b6854e')
             .fontSize(14)
             .fontWeight(600)
+            .onClick(()=>{
+              //1.是否选中  双向绑定
+              if (this.isSelected) {
+                
+              }
+              //2.用户名密码是否为空
+
+            })
 
           Row() {
             Text('立即注册')
@@ -77,6 +85,7 @@ struct XMYP_Login {
           Checkbox()
             .shape(CheckBoxShape.CIRCLE)
             .selectedColor('#af8756')
+            .select($$this.isSelected)
 
           Text() {
             Span('已阅读并同意')
