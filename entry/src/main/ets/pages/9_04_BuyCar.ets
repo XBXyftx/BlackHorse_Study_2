@@ -53,6 +53,8 @@ struct CartPage {
     count: 4
   }
   ]
+  @State selectedIDS: number[] = []
+  @State totalPrice: number = 0
 
   build() {
     Column() {
@@ -62,10 +64,13 @@ struct CartPage {
       // 商品列表
       List() {
 
-        ForEach(this.goodList,(item:GoodInfo)=>{
+        ForEach(this.goodList, (item: GoodInfo) => {
           ListItem() {
             Row({ space: 10 }) {
-              Checkbox()
+              Checkbox({
+                group: 'goods',
+                name: item.id.toString()
+              })
                 .selectedColor('#eb4646')
               Image(item.img)
                 .width(100)
@@ -104,14 +109,28 @@ struct CartPage {
       // 结算
       Row() {
         CheckboxGroup({
-          group:'goods'
+          group: 'goods'
         })
           .selectedColor('#d8534c')
+          .onChange((res) => {
+            console.log(JSON.stringify(res))
+            this.selectedIDS = res.name.map(id => parseInt(id))
+            this.totalPrice = parseInt(this.goodList.filter((item: GoodInfo) => {
+              if (this.selectedIDS.includes(item.id)) {
+                return true
+              } else {
+                return false
+              }
+            }).reduce((pre: number, item: GoodInfo) => {
+              return pre + item.price * item.count
+            },0).toFixed(2))
+
+          })
 
         Text('全选')
         Text() {
           Span('合计')
-          Span(`¥0.0`)
+          Span(`¥${this.totalPrice}`)
             .fontColor('#d8534c')
         }
         .layoutWeight(1)
