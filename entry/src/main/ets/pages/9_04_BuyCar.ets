@@ -61,36 +61,40 @@ struct CartPage {
         .width('100%')
       // 商品列表
       List() {
-        ListItem() {
-          Row({ space: 10 }) {
-            Checkbox()
-              .selectedColor('#eb4646')
-            Image('https://img11.360buyimg.com/n2/s240x240_jfs/t1/154052/34/22342/2570546/65f39e22F565a8c81/9fc2c1c50e7abe57.jpg!q70.jpg.webp')
-              .width(100)
-              .borderRadius(10)
-            Column() {
-              Text('商品名')
-                .maxLines(2)
-                .textOverflow({ overflow: TextOverflow.Ellipsis })
-              Blank()
-              Row() {
-                Text(`¥10.0`)
-                  .fontColor(Color.Red)
-                  .fontSize(20)
-                Blank()
-                Text(`x 10`)
-                  .fontColor(Color.Gray)
-                  .fontSize(14)
-              }
-              .width('100%')
-            }
-            .height('100%')
-            .layoutWeight(1)
 
+        ForEach(this.goodList,(item:GoodInfo)=>{
+          ListItem() {
+            Row({ space: 10 }) {
+              Checkbox()
+                .selectedColor('#eb4646')
+              Image(item.img)
+                .width(100)
+                .borderRadius(10)
+              Column() {
+                Text(item.name)
+                  .maxLines(2)
+                  .textOverflow({ overflow: TextOverflow.Ellipsis })
+                Blank()
+                Row() {
+                  Text(`¥${item.price}`)
+                    .fontColor(Color.Red)
+                    .fontSize(20)
+                  Blank()
+                  Text(`x ${item.count}`)
+                    .fontColor(Color.Gray)
+                    .fontSize(14)
+                }
+                .width('100%')
+              }
+              .height('100%')
+              .layoutWeight(1)
+
+            }
+            .height(110)
+            .padding(10)
           }
-          .height(110)
-          .padding(10)
-        }
+        })
+
       }
       .divider({ strokeWidth: 1, startMargin: 40, endMargin: 20 })
       .edgeEffect(EdgeEffect.Fade)
@@ -99,7 +103,9 @@ struct CartPage {
 
       // 结算
       Row() {
-        CheckboxGroup()
+        CheckboxGroup({
+          group:'goods'
+        })
           .selectedColor('#d8534c')
 
         Text('全选')
