@@ -1,7 +1,10 @@
 @Entry
 @Component
 struct XMYP_Login {
-@State isSelected:boolean=false
+  @State isSelected: boolean = false
+  @State userName: string = ''
+  @State password: string = ''
+
   build() {
     Column() {
       // 1. 顶部
@@ -29,7 +32,8 @@ struct XMYP_Login {
               .padding(0)
               .height(48)
               .type(InputType.Password)
-              .passwordIcon({//眼睛样式
+              .passwordIcon({
+                //眼睛样式
                 offIconSrc: $r('app.media.ic_eyes_open'),
                 onIconSrc: $r('app.media.ic_eyes_close'),
               })
@@ -53,10 +57,13 @@ struct XMYP_Login {
             .backgroundColor('#b6854e')
             .fontSize(14)
             .fontWeight(600)
-            .onClick(()=>{
+            .onClick(() => {
               //1.是否选中  双向绑定
-              if (this.isSelected) {
-                
+              if (this.isSelected != true) {
+                AlertDialog.show({
+                  message: '请先同意用户协议'
+                })
+                return
               }
               //2.用户名密码是否为空
 
@@ -120,7 +127,12 @@ struct XMYP_Login {
 
       }
     }
-    .padding({ top: 30, left: 30, right: 30, bottom: 50 })
+    .padding({
+      top: 30,
+      left: 30,
+      right: 30,
+      bottom: 50
+    })
     .height('100%')
   }
 
