@@ -26,7 +26,7 @@ console.log('res:', reg2.test('ArkTSArkTS')) //F
 
 @Entry
 @Component
-struct ZhengZe2 {
+struct ZhengZeBianJieFu {
   build() {
     //根组件
     Column() {
