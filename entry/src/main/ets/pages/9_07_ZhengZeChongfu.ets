@@ -48,7 +48,6 @@ console.log('res:', reg6.test('wwwww')) //F
 
 
 
-
 @Entry
 @Component
 struct ZhengZeChongFu {
