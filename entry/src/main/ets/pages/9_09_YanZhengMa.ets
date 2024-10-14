@@ -2,6 +2,8 @@
 @Component
 struct LoginDemo {
   @State time: number = 0
+  @State phone: number = 0
+  @State code: number = 0
 
   build() {
     Column() {
@@ -59,6 +61,9 @@ struct LoginDemo {
         .type(ButtonType.Normal)
         .backgroundColor('#ea6051')
         .margin({ top: 50 })
+        .onClick(() => {
+          console.log(this.phone + this.code + '')
+        })
 
     }
     .padding({ top: 80, left: 40, right: 40 })
