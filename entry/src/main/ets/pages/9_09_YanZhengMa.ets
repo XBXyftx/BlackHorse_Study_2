@@ -19,6 +19,7 @@ struct LoginDemo {
           .padding({ left: 0, top: 20, bottom: 20 })
           .placeholderColor('#ccc')
           .layoutWeight(1)
+
         Text(this.time == 0 ? '发送验证码' : `${this.time}秒后获取`)
           .fontSize(14)
           .fontColor(Color.Gray)
@@ -36,6 +37,7 @@ struct LoginDemo {
               AlertDialog.show({
                 message: code.toString()
               })
+              this.code = code
             }, 2000)
 
             // 修改 倒计时时间
