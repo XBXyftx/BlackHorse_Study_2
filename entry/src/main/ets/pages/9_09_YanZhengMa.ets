@@ -2,19 +2,19 @@
 @Component
 struct LoginDemo {
   @State time: number = 0
-  @State phone: number = 0
-  @State code: number = 0
+  @State phone: string = ''
+  @State code: string = ''
 
   build() {
     Column() {
       this.titleBuilder()
-      TextInput({ placeholder: '请输入手机号' })
+      TextInput({ placeholder: '请输入手机号', text: $$this.phone })
         .backgroundColor(Color.White)
         .padding({ left: 0, top: 20, bottom: 20 })
         .placeholderColor('#ccc')
       Divider()
       Row() {
-        TextInput({ placeholder: '请输入验证码' })
+        TextInput({ placeholder: '请输入验证码', text: $$this.code })
           .backgroundColor(Color.White)
           .padding({ left: 0, top: 20, bottom: 20 })
           .placeholderColor('#ccc')
@@ -37,7 +37,7 @@ struct LoginDemo {
               AlertDialog.show({
                 message: code.toString()
               })
-              this.code = code
+              this.code = code.toString()
             }, 2000)
 
             // 修改 倒计时时间
@@ -65,7 +65,25 @@ struct LoginDemo {
         .margin({ top: 50 })
         .onClick(() => {
           console.log(this.phone + this.code + '')
+          const phoneReg = /^(?:(?:\+|00)86)?1\d{10}$/
+          const codeReg = /^[0-9a-zA-Z]{4}$/
+          if (phoneReg.test(this.phone) == false) {
+            AlertDialog.show({
+              message: '手机号有误'
+            })
+            return
+          }
+          if (codeReg.test(this.code) == false) {
+            AlertDialog.show({
+              message: '验证码有误'
+            })
+            return
+          }
+          AlertDialog.show({
+            message:'登陆成功'
+          })
         })
+
 
     }
     .padding({ top: 80, left: 40, right: 40 })
