@@ -1,11 +1,14 @@
 @Component
 struct Card {
+  title:string=''
+  subTitle:string=''
+
   build() {
     Column() {
       Row() {
-        Text('默认文本')
+        Text(this.title)
         Row(){
-          Text('右侧文本')
+          Text(this.subTitle)
           Image($rawfile('ic_public_arrow_right.svg'))
             .fillColor(Color.Gray)
             .width(20)
@@ -13,6 +16,12 @@ struct Card {
       }
       .justifyContent(FlexAlign.SpaceBetween)
       .width('100%')
+
+      Column(){
+        Text('默认内容')
+      }
+      .height(100)
+      .justifyContent(FlexAlign.Center)
     }
     .padding(10)
     .borderRadius(10)
