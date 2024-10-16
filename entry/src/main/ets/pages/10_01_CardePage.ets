@@ -2,7 +2,7 @@
 struct Card {
   title:string=''
   subTitle:string=''
-
+  clickHandler = ()=>{}
   build() {
     Column() {
       Row() {
