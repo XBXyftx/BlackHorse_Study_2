@@ -11,6 +11,7 @@ struct Card {
     Column() {
       Row() {
         Text(this.title)
+          .fontWeight(700)
         Row() {
           Text(this.subTitle)
           Image($rawfile('ic_public_arrow_right.svg'))
@@ -41,7 +42,7 @@ struct Card {
 @Component
 struct CardPage {
   build() {
-    Column() {
+    Column({space:10}) {
       Card({
         title: '全部评论',
         subTitle: '更多',
@@ -49,8 +50,41 @@ struct CardPage {
           AlertDialog.show({
             message: '我要去看更多评论'
           })
-        }
+        },
+        value:'评论！！！'
       })
+
+
+      Grid(){
+        GridItem(){
+          Card({
+            title: '全部评论',
+            subTitle: '更多',
+            clickHandler() {
+              AlertDialog.show({
+                message: '我要去看更多评论'
+              })
+            },
+            value:'评论！！！'
+          })
+        }
+        GridItem(){
+          Card({
+            title: '全部评论',
+            subTitle: '更多',
+            clickHandler() {
+              AlertDialog.show({
+                message: '我要去看更多评论'
+              })
+            },
+            value:'评论！！！'
+          })
+        }
+      }
+      .columnsGap(10)
+      .columnsTemplate('1fr 1fr')
+
+
     }
     .padding(20)
     .width('100%')
