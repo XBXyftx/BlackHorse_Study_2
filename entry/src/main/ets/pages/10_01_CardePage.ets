@@ -6,6 +6,8 @@ struct Card {
     console.log('1')
   }
   value: string = ''
+  @BuilderParam
+  content:()=>void = this.defaultBuilder
 
   build() {
     Column() {
@@ -27,7 +29,7 @@ struct Card {
       .width('100%')
 
       Column() {
-        Text(this.value)
+        this.content()
       }
       .height(100)
       .justifyContent(FlexAlign.Center)
@@ -36,11 +38,22 @@ struct Card {
     .borderRadius(10)
     .backgroundColor(Color.Pink)
   }
+
+  @Builder
+  defaultBuilder() {
+    Text(this.value)
+  }
 }
 
 @Entry
 @Component
 struct CardPage {
+
+  @Builder
+  avatarBuilder(){
+    Image($rawfile('avatar.jpg'))
+  }
+
   build() {
     Column({space:10}) {
       Card({
@@ -77,7 +90,8 @@ struct CardPage {
                 message: '我要去看更多评论'
               })
             },
-            value:'评论！！！'
+            value:'评论！！！',
+            content:this.avatarBuilder
           })
         }
       }
