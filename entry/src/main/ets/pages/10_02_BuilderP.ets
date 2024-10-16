@@ -37,7 +37,7 @@ struct Index {
       SonCom()
       SonCom(){
         Button('点我啊')
-      }
+      }//尾随闭包
       SonCom(){
         Image($rawfile('avatar.jpg'))
       }
