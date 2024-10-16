@@ -33,8 +33,14 @@ struct SonCom {
 @Component
 struct Index {
   build() {
-    Column() {
-
+    Column({space:10}) {
+      SonCom()
+      SonCom(){
+        Button('点我啊')
+      }
+      SonCom(){
+        Image($rawfile('avatar.jpg'))
+      }
     }
     .width('100%')
     .height('100%')
