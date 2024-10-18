@@ -1,7 +1,7 @@
 @Component
 struct SonCom {
   @Prop info: string
-  changeInfo = () => {
+  changeInfo = (newInfo:string) => {
 
   }
 
@@ -9,7 +9,7 @@ struct SonCom {
     Button('info:' + this.info)
       .onClick(() => {
         this.info = '子组件修改'
-        this.changeInfo()
+        this.changeInfo('儿子')
       })
   }
 }
@@ -27,9 +27,11 @@ struct FatherCom {
         })
       SonCom({
         info: this.info,
-        changeInfo:()=>{
+        changeInfo:(newInfo:string)=>{
           console.log('父组件的changeInfo')//用父组件传入的逻辑来实现用子组件控制父组件
           this.info='阿米诺斯'
+          console.log('newInfo'+newInfo)
+          this.info=newInfo
         }
       })
     }
