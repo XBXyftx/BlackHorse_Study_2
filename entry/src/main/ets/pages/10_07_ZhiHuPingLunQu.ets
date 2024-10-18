@@ -105,14 +105,14 @@ struct ZhiHu {
             // 顶部评论
             CommentItem({
               replay: this.rootComment,
-              changeLike:()=>{
+              changeLike: () => {
                 this.rootComment.likeFlag = !this.rootComment.likeFlag
                 if (this.rootComment.likeFlag) {
                   this.rootComment.likeNum++
-                }else {
+                } else {
                   this.rootComment.likeNum--
                 }
-                
+
               }
             })
             // 分割线
@@ -126,16 +126,16 @@ struct ZhiHu {
             ForEach(this.commentList, (item: ReplyItem, i: number) => {
               CommentItem({
                 replay: item,
-                changeLike:()=>{
+                changeLike: () => {
                   item.likeFlag = !item.likeFlag
                   if (item.likeFlag) {
                     item.likeNum++
-                  }else {
+                  } else {
                     item.likeNum--
                   }
-                  console.log(JSON.stringify(item))//此处可知数据变化了
+                  console.log(JSON.stringify(item)) //此处可知数据变化了
                   //Key只能拿到第一层
-                  this.commentList.splice(i,1,item)//此处还有问题在于头像闪烁
+                  this.commentList.splice(i, 1, item) //此处还有问题在于头像闪烁
                 }
               })
             })
@@ -223,8 +223,8 @@ struct CommentItem {
             Image($r('app.media.like'))
               .width(14)
               .aspectRatio(1)
-              .fillColor(this.replay.likeFlag ? Color.Red : "#c3c4c5") //  "#c3c4c5" 或 red
-              .onClick(()=>{
+              .fillColor(this.replay.likeFlag ? Color.Red : "#c3c4c5")//  "#c3c4c5" 或 red
+              .onClick(() => {
                 this.changeLike()
               })
 
@@ -268,12 +268,13 @@ struct ReplyCount {
 
 @Component
 struct ReplyInput {
-  @State inputValue:string=''
-  addReply = (inputStr:string)=>{}
+  @State inputValue: string = ''
+  addReply = (inputStr: string) => {
+  }
 
   build() {
     Row() {
-      TextInput({ placeholder: '回复' })
+      TextInput({ placeholder: '回复', text: $$this.inputValue })
         .layoutWeight(1)
         .backgroundColor("#f4f5f6")
         .height(40)
@@ -282,6 +283,10 @@ struct ReplyInput {
         .fontSize(14)
         .margin({
           left: 10
+        })
+        .onClick(() => {
+          this.addReply(this.inputValue)
+          this.inputValue = ''
         })
 
     }
