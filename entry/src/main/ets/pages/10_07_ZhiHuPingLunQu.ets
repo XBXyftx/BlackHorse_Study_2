@@ -112,7 +112,6 @@ struct ZhiHu {
                 } else {
                   this.rootComment.likeNum--
                 }
-
               }
             })
             // 分割线
@@ -151,7 +150,20 @@ struct ZhiHu {
       }
       .height('100%')
 
-      ReplyInput()
+      ReplyInput({
+        addReply:(inputStr:string)=>{
+          this.commentList.unshift({
+            id:Date.now(),//当前时间戳
+            avatar:$r('app.media.avatar'),
+            author:'花姐',
+            content:inputStr,
+            time:`${new Date().getMonth()+1}-${new Date().getDate()}`,
+            area:'北京',
+            likeNum:999,
+            likeFlag:false
+          })
+        }
+      })
     }
     .height('100%')
   }
