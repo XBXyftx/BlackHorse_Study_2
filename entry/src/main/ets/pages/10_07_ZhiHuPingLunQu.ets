@@ -1,12 +1,12 @@
 interface ReplyItem {
-  id: number//数据的标记
-  avatar: ResourceStr//头像
-  author: string//作者
-  content: string//内容
-  time: string//时间
-  area: string//IP地址
-  likeNum: number//点赞数
-  likeFlag: boolean//是否被点赞
+  id: number //数据的标记
+  avatar: ResourceStr //头像
+  author: string //作者
+  content: string //内容
+  time: string //时间
+  area: string //IP地址
+  likeNum: number //点赞数
+  likeFlag: boolean //是否被点赞
 }
 
 class ReplyData {
@@ -103,7 +103,9 @@ struct ZhiHu {
             // 顶部组件
             HmNavBar()
             // 顶部评论
-            CommentItem()
+            CommentItem({
+              replay: this.rootComment
+            })
             // 分割线
             Divider()
               .strokeWidth(6)
@@ -112,8 +114,10 @@ struct ZhiHu {
             ReplyCount()
 
             // 回复评论列表
-            ForEach(Array.from({ length: 10 }), () => {
-              CommentItem()
+            ForEach(this.commentList, (item: ReplyItem, i: number) => {
+              CommentItem({
+                replay: item
+              })
             })
           }
           .width('100%')
@@ -171,29 +175,31 @@ struct HmNavBar {
 
 @Component
 struct CommentItem {
+  @Prop replay: ReplyItem
+
   build() {
     Row() {
-      Image($r('app.media.avatar'))
+      Image(this.replay.avatar)
         .width(32)
         .height(32)
         .borderRadius(16)
       Column({ space: 10 }) {
-        Text('作者')
+        Text(this.replay.author)
           .fontWeight(600)
-        Text('内容')
+        Text(this.replay.content)
           .lineHeight(20)
           .fontSize(14)
           .fontColor("#565656")
 
         Row() {
-          Text(`11-30 . IP属地 北京`)
+          Text(`${this.replay.time} . ${this.replay.area}`)
             .fontColor("#c3c4c5")
             .fontSize(12)
           Row() {
             Image($r('app.media.like'))
               .width(14)
               .aspectRatio(1)
-              .fillColor("#c3c4c5") //  "#c3c4c5" 或 red
+              .fillColor(this.replay.likeFlag ? Color.Red : "#c3c4c5") //  "#c3c4c5" 或 red
 
             Text('10')
               .fontSize(12)
