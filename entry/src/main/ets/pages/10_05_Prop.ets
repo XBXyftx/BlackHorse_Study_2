@@ -1,11 +1,15 @@
 @Component
 struct SonCom {
   @Prop info: string
+  changeInfo = () => {
+
+  }
 
   build() {
     Button('info:' + this.info)
       .onClick(() => {
         this.info = '子组件修改'
+        this.changeInfo()
       })
   }
 }
@@ -23,7 +27,10 @@ struct FatherCom {
         })
       SonCom({
         info: this.info,
-
+        changeInfo:()=>{
+          console.log('父组件的changeInfo')
+          this.info='阿米诺斯'
+        }
       })
     }
     .padding(20)
