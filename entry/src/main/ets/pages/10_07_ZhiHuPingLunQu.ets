@@ -120,7 +120,7 @@ struct ZhiHu {
               .strokeWidth(6)
               .color("#f4f5f6")
             // 回复数
-            ReplyCount()
+            ReplyCount({cont:this.commentList.length})
 
             // 回复评论列表
             ForEach(this.commentList, (item: ReplyItem, i: number) => {
@@ -255,10 +255,11 @@ struct CommentItem {
 
 @Component
 struct ReplyCount {
+  @Prop cont:number
   build() {
     Text() {
       Span('回复')
-      Span(`${27}`)
+      Span(`${this.cont}`)
     }
     .padding(15)
     .fontWeight(700)
