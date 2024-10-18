@@ -104,7 +104,16 @@ struct ZhiHu {
             HmNavBar()
             // 顶部评论
             CommentItem({
-              replay: this.rootComment
+              replay: this.rootComment,
+              changeLike:()=>{
+                this.rootComment.likeFlag = !this.rootComment.likeFlag
+                if (this.rootComment.likeFlag) {
+                  this.rootComment.likeNum++
+                }else {
+                  this.rootComment.likeNum--
+                }
+                
+              }
             })
             // 分割线
             Divider()
@@ -116,7 +125,18 @@ struct ZhiHu {
             // 回复评论列表
             ForEach(this.commentList, (item: ReplyItem, i: number) => {
               CommentItem({
-                replay: item
+                replay: item,
+                changeLike:()=>{
+                  item.likeFlag = !item.likeFlag
+                  if (item.likeFlag) {
+                    item.likeNum++
+                  }else {
+                    item.likeNum--
+                  }
+                  console.log(JSON.stringify(item))//此处可知数据变化了
+                  //Key只能拿到第一层
+                  this.commentList.splice(i,1,item)//此处还有问题在于头像闪烁
+                }
               })
             })
           }
@@ -176,6 +196,10 @@ struct HmNavBar {
 @Component
 struct CommentItem {
   @Prop replay: ReplyItem
+  //点赞子改父函数
+  changeLike = () => {
+
+  }
 
   build() {
     Row() {
@@ -200,8 +224,11 @@ struct CommentItem {
               .width(14)
               .aspectRatio(1)
               .fillColor(this.replay.likeFlag ? Color.Red : "#c3c4c5") //  "#c3c4c5" 或 red
+              .onClick(()=>{
+                this.changeLike()
+              })
 
-            Text('10')
+            Text(this.replay.likeNum.toString())
               .fontSize(12)
               .margin({
                 left: 5
