@@ -268,6 +268,9 @@ struct ReplyCount {
 
 @Component
 struct ReplyInput {
+  @State inputValue:string=''
+  addReply = (inputStr:string)=>{}
+
   build() {
     Row() {
       TextInput({ placeholder: '回复' })
