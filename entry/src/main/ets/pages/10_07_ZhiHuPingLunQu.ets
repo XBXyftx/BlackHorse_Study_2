@@ -1,12 +1,12 @@
 interface ReplyItem {
-  id: number
-  avatar: ResourceStr
-  author: string
-  content: string
-  time: string
-  area: string
-  likeNum: number
-  likeFlag: boolean
+  id: number//数据的标记
+  avatar: ResourceStr//头像
+  author: string//作者
+  content: string//内容
+  time: string//时间
+  area: string//IP地址
+  likeNum: number//点赞数
+  likeFlag: boolean//是否被点赞
 }
 
 class ReplyData {
