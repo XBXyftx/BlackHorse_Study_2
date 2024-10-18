@@ -28,7 +28,7 @@ struct FatherCom {
       SonCom({
         info: this.info,
         changeInfo:()=>{
-          console.log('父组件的changeInfo')
+          console.log('父组件的changeInfo')//用父组件传入的逻辑来实现用子组件控制父组件
           this.info='阿米诺斯'
         }
       })
