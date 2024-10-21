@@ -1,3 +1,5 @@
+import { it } from "@ohos/hypium";
+
 // 接口
 export interface iDatum {
   id: number; //  评论id
@@ -86,6 +88,61 @@ struct Header {
   }
 }
 
+@Component
+struct commentItem {
+  @Prop item: iDatum
+  changeData = (op: optType) => {
+
+  }
+
+  build() {
+    ListItem() {
+      Row({ space: 10 }) {
+        Image($r('app.media.ic_common_send'))
+          .width(50)
+          .alignSelf(ItemAlign.Start)
+        Column() {
+          Text(this.item.username)
+            .fontSize(14)
+            .fontColor(Color.Gray)
+          Text(this.item.content)
+            .fontSize(14)
+          Row() {
+            Text(this.item.time)
+              .fontSize(13)
+              .fontColor(Color.Gray)
+            Blank()
+            Row({ space: 20 }) {
+              Text(`支持(${this.item.agreeCount})`)
+                .fontSize(12)
+                .fontColor(this.item.isagreed ? Color.Green : Color.Gray)// 绿色 和 灰色切换
+                .onClick(() => {
+                  if (this.item.isagreed) {
+                    this.changeData(optType.agree)
+                  } else {
+
+                  }
+                })
+              Text(`反对(${this.item.rejectCount})`)
+                .fontSize(12)
+                .fontColor(Color.Red) // 红色 和 灰色切换
+
+            }
+          }
+          .width('100%')
+        }
+        .layoutWeight(1)
+        .alignItems(HorizontalAlign.Start)
+        .height('100%')
+        .justifyContent(FlexAlign.SpaceBetween)
+      }
+      .width('100%')
+      .padding(10)
+      .height(90)
+    }
+  }
+}
+
 
 @Entry
 @Component
@@ -96,83 +153,21 @@ struct HomeWorkPage {
       Header()
 
       List() {
-        ListItem() {
-          Row({ space: 10 }) {
-            Image($r('app.media.ic_common_send'))
-              .width(50)
-              .alignSelf(ItemAlign.Start)
-            Column() {
-              Text('阿三')
-                .fontSize(14)
-                .fontColor(Color.Gray)
-              Text('已经用上了，很舒服')
-                .fontSize(14)
-              Row() {
-                Text('2024-10-19')
-                  .fontSize(13)
-                  .fontColor(Color.Gray)
-                Blank()
-                Row({ space: 20 }) {
-                  Text('支持(14)')
-                    .fontSize(12)
-                    .fontColor(Color.Green) // 绿色 和 灰色切换
-                  Text('反对(14)')
-                    .fontSize(12)
-                    .fontColor(Color.Red) // 红色 和 灰色切换
 
-                }
-              }
-              .width('100%')
-            }
-            .layoutWeight(1)
-            .alignItems(HorizontalAlign.Start)
-            .height('100%')
-            .justifyContent(FlexAlign.SpaceBetween)
-          }
-          .width('100%')
-          .padding(10)
-          .height(90)
-        }
+        ForEach(arr, (item: iDatum, i) => {
+          commentItem({
+            item: item
+          })
+        })
 
-        ListItem() {
-          Row({ space: 10 }) {
-            Image($r('app.media.ic_common_send'))
-              .width(50)
-              .alignSelf(ItemAlign.Start)
-            Column() {
-              Text('阿三')
-                .fontSize(14)
-                .fontColor(Color.Gray)
-              Text('已经用上了，很舒服')
-                .fontSize(14)
-              Row() {
-                Text('2024-10-19')
-                  .fontSize(13)
-                  .fontColor(Color.Gray)
-                Blank()
-                Row({ space: 20 }) {
-                  Text('支持(14)')
-                    .fontSize(12)
-                    .fontColor(Color.Green) // 绿色 和 灰色切换
-                  Text('反对(14)')
-                    .fontSize(12)
-                    .fontColor(Color.Red) // 红色 和 灰色切换
 
-                }
-              }
-              .width('100%')
-            }
-            .layoutWeight(1)
-            .alignItems(HorizontalAlign.Start)
-            .height('100%')
-            .justifyContent(FlexAlign.SpaceBetween)
-          }
-          .width('100%')
-          .padding(10)
-          .height(90)
-        }
       }
-      .divider({ startMargin: 20, endMargin: 20, strokeWidth: 1, color: Color.Gray })
+      .divider({
+        startMargin: 20,
+        endMargin: 20,
+        strokeWidth: 1,
+        color: Color.Gray
+      })
     }
 
   }
