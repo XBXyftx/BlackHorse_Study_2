@@ -120,12 +120,19 @@ struct commentItem {
                   if (this.item.isagreed) {
                     this.changeData(optType.agree)
                   } else {
-
+                    this.changeData(optType.unagree)
                   }
                 })
               Text(`反对(${this.item.rejectCount})`)
                 .fontSize(12)
-                .fontColor(Color.Red) // 红色 和 灰色切换
+                .fontColor(this.item.isreject ? Color.Red : Color.Gray)// 红色 和 灰色切换
+                .onClick(() => {
+                  if (this.item.isreject) {
+                    this.changeData(optType.reject)
+                  } else {
+                    this.changeData(optType.unreject)
+                  }
+                })
 
             }
           }
@@ -147,6 +154,8 @@ struct commentItem {
 @Entry
 @Component
 struct HomeWorkPage {
+  @State list:iDatum[]=arr
+
   build() {
     Column() {
       // 头部组件
@@ -154,9 +163,25 @@ struct HomeWorkPage {
 
       List() {
 
-        ForEach(arr, (item: iDatum, i) => {
+        ForEach(this.list, (item: iDatum, i) => {
           commentItem({
-            item: item
+            item: item,
+            changeData: (op: optType) => {
+              if (op == optType.agree) {
+                item.isagreed = !item.isagreed
+                item.agreeCount--
+              } else if (op == optType.unagree) {
+                item.isagreed = !item.isagreed
+                item.agreeCount++
+              } else if (op == optType.reject) {
+                item.isreject = !item.isreject
+                item.rejectCount--
+              } else if (op == optType.unreject) {
+                item.isreject = !item.isreject
+                item.rejectCount++
+              }
+              this.list.splice(i,1,item)
+            }
           })
         })
 
