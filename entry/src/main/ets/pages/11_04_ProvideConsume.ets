@@ -9,7 +9,9 @@ struct RootComponent {
       Text('顶级组件')
         .fontSize(30)
         .fontWeight(900)
+      Text(this.food)
       ParentComponent()
+
     }
     .padding(10)
     .height('100%')
@@ -43,13 +45,21 @@ struct ParentComponent {
 @Component
   // 内层组件
 struct SonComponent {
+  // @Consume food:string
+  @Consume ('food') myFood:string//别名
   // 编写 UI
   build() {
     Column({ space: 20 }) {
       Text('我是内层组件')
         .fontSize(20)
         .fontWeight(900)
+      // Text(this.food)
+      Text(this.myFood)
     }
+    .onClick(()=>{
+      // this.food+='好好吃'
+      this.myFood+='好好吃'
+    })
     .backgroundColor('#bf94e4')
     .alignItems(HorizontalAlign.Center)
     .width('90%')
