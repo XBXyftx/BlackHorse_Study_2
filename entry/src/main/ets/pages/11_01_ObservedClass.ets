@@ -1,28 +1,23 @@
-interface Person {
+@Observed
+class Person {
   id: number
   name: string
   age: number
+
+  constructor(id: number, name: string, age: number) {
+    this.id = id
+    this.name = name
+    this.age = age
+  }
 }
 
 @Entry
 @Component
 struct ObservedAndLink {
   @State personList: Person[] = [
-    {
-      id: 1,
-      name: '张三',
-      age: 18
-    },
-    {
-      id: 2,
-      name: '李四',
-      age: 19
-    },
-    {
-      id: 3,
-      name: '王五',
-      age: 20
-    }
+    new Person(1, '一方通行', 18),
+    new Person(2, 'XBX', 20),
+    new Person(3, '悟空', 10000)
   ]
 
   build() {
