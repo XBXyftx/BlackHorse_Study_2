@@ -45,7 +45,7 @@ struct ObservedAndLink {
 
 @Component
 struct ItemCom {
-  @Prop info: Person
+  @ObjectLink info: Person
   addAge = () => {
   }
 
