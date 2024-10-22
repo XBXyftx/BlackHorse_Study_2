@@ -1,15 +1,24 @@
+interface Cat{
+  name:string
+  color:string
+}
+
 @Entry
 @Component
   // 顶级组件
 struct RootComponent {
   @Provide food:string = '包子'
-
+  @Provide cat:Cat={
+    name:'波斯猫',
+    color:'黑色'
+  }
   build() {
     Column() {
       Text('顶级组件')
         .fontSize(30)
         .fontWeight(900)
       Text(this.food)
+      Text(JSON.stringify(this.cat))
       ParentComponent()
 
     }
@@ -47,6 +56,7 @@ struct ParentComponent {
 struct SonComponent {
   // @Consume food:string
   @Consume ('food') myFood:string//别名
+  @Consume cat:Cat
   // 编写 UI
   build() {
     Column({ space: 20 }) {
@@ -55,11 +65,15 @@ struct SonComponent {
         .fontWeight(900)
       // Text(this.food)
       Text(this.myFood)
+        .onClick(()=>{
+          // this.food+='好好吃'
+          this.myFood+='好好吃'
+        })
+      Text(JSON.stringify(this.cat))
+        .onClick(()=>{
+          this.cat.name+='!!!'
+        })
     }
-    .onClick(()=>{
-      // this.food+='好好吃'
-      this.myFood+='好好吃'
-    })
     .backgroundColor('#bf94e4')
     .alignItems(HorizontalAlign.Center)
     .width('90%')
