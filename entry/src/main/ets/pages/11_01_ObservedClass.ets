@@ -30,7 +30,7 @@ struct ObservedAndLink {
             info: item,
             addAge: () => {
               item.age++
-              this.personList.splice(index, 1, item)
+              // this.personList.splice(index, 1, item)
             }
           })
         })
