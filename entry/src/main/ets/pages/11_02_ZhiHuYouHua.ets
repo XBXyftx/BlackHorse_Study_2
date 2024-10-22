@@ -1,4 +1,5 @@
-interface ReplyItem {
+
+interface  IReply {
   id: number //数据的标记
   avatar: ResourceStr //头像
   author: string //作者
@@ -8,11 +9,35 @@ interface ReplyItem {
   likeNum: number //点赞数
   likeFlag: boolean //是否被点赞
 }
+@Observed
+class  ReplyItem {            //alt+j多选相同，ctrl+shift+左右是选词
+  id: number //数据的标记
+  avatar: ResourceStr //头像
+  author: string //作者
+  content: string //内容
+  time: string //时间
+  area: string //IP地址
+  likeNum: number //点赞数
+  likeFlag: boolean //是否被点赞
+
+  constructor(item: IReply) {
+    this.id=item.id //数据的标记
+    this.avatar=item.avatar //头像
+    this.author=item.author //作者
+    this.content=item.content //内容
+    this.time=item.time //时间
+    this.area=item.area //IP地址
+    this.likeNum=item.likeNum //点赞数
+    this.likeFlag=item.likeFlag //是否被点赞
+  }
+
+
+}
 
 class ReplyData {
   static getCommentList(): ReplyItem[] {
     return [
-      {
+      new ReplyItem({
         id: 1,
         avatar: 'https://picx.zhimg.com/027729d02bdf060e24973c3726fea9da_l.jpg?source=06d4cd63',
         author: '偏执狂-妄想家',
@@ -21,8 +46,9 @@ class ReplyData {
         area: '海南',
         likeNum: 34,
         likeFlag: false
-      },
-      {
+      })
+      ,
+      new ReplyItem({
         id: 2,
         avatar: 'https://pic1.zhimg.com/v2-5a3f5190369ae59c12bee33abfe0c5cc_xl.jpg?source=32738c0c',
         author: 'William',
@@ -31,8 +57,9 @@ class ReplyData {
         area: '北京',
         likeNum: 58,
         likeFlag: true
-      },
-      {
+      })
+      ,
+      new ReplyItem({
         id: 3,
         avatar: 'https://picx.zhimg.com/v2-e6f4605c16e4378572a96dad7eaaf2b0_l.jpg?source=06d4cd63',
         author: 'Andy Garcia',
@@ -41,8 +68,9 @@ class ReplyData {
         area: '上海',
         likeNum: 10,
         likeFlag: false
-      },
-      {
+      })
+      ,
+      new ReplyItem({
         id: 4,
         avatar: 'https://picx.zhimg.com/v2-53e7cf84228e26f419d924c2bf8d5d70_l.jpg?source=06d4cd63',
         author: '正宗好鱼头',
@@ -51,8 +79,9 @@ class ReplyData {
         area: '香港',
         likeNum: 139,
         likeFlag: true
-      },
-      {
+      })
+      ,
+      new ReplyItem({
         id: 5,
         avatar: 'https://pic1.zhimg.com/v2-eeddfaae049df2a407ff37540894c8ce_l.jpg?source=06d4cd63',
         author: '柱子哥',
@@ -61,8 +90,9 @@ class ReplyData {
         area: '旧金山',
         likeNum: 29,
         likeFlag: false
-      },
-      {
+      })
+      ,
+      new ReplyItem({
         id: 6,
         avatar: 'https://picx.zhimg.com/v2-fab3da929232ae911e92bf8137d11f3a_l.jpg?source=06d4cd63',
         author: '飞轩逸',
@@ -71,12 +101,13 @@ class ReplyData {
         area: '里约',
         likeNum: 100,
         likeFlag: false
-      }
+      })
+
     ]
   }
 
   static getRootComment(): ReplyItem {
-    return {
+    return new ReplyItem({
       id: 1,
       avatar: $r('app.media.avatar'),
       author: '周杰伦',
@@ -85,7 +116,7 @@ class ReplyData {
       area: '海南',
       likeNum: 98,
       likeFlag: true
-    }
+    })
   }
 }
 
@@ -132,9 +163,9 @@ struct ZhiHu {
                   } else {
                     item.likeNum--
                   }
-                  console.log(JSON.stringify(item)) //此处可知数据变化了
-                  //Key只能拿到第一层
-                  this.commentList.splice(i, 1, item) //此处还有问题在于头像闪烁
+                  // console.log(JSON.stringify(item)) //此处可知数据变化了
+                  // //Key只能拿到第一层
+                  // this.commentList.splice(i, 1, item) //此处还有问题在于头像闪烁
                 }
               })
             })
@@ -152,7 +183,7 @@ struct ZhiHu {
 
       ReplyInput({
         addReply:(inputStr:string)=>{
-          this.commentList.unshift({
+          this.commentList.unshift(new ReplyItem({
             id:Date.now(),//当前时间戳
             avatar:$r('app.media.avatar'),
             author:'花姐',
@@ -161,7 +192,7 @@ struct ZhiHu {
             area:'北京',
             likeNum:999,
             likeFlag:false
-          })
+          }))
         }
       })
     }
@@ -207,7 +238,7 @@ struct HmNavBar {
 
 @Component
 struct CommentItem {
-  @Prop replay: ReplyItem
+  @ObjectLink replay: ReplyItem
   //点赞子改父函数
   changeLike = () => {
 
