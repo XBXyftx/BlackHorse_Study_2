@@ -1,18 +1,27 @@
+interface Dog{
+  name:string
+  color:Color
+}
+
 @Entry
 @Component
   // 父组件
 struct Link_Demo {
   @State count: number = 0
-
+  @State dog:Dog = {name:'藏獒',color:Color.Black}
   build() {
     Column() {
       Text('父组件')
         .fontSize(30)
       Text(this.count.toString())
+      Text(JSON.stringify(this.dog))
       Button('修改数据')
         .onClick(() => {
+          this.count++
+          this.dog.name='!!!???'
+          this.dog.color=Color.Green
         })
-      SonComponent()
+      SonComponent({count:this.count,dog:this.dog})
     }
     .padding(10)
     .height('100%')
@@ -26,14 +35,20 @@ struct Link_Demo {
 @Component
   // 子组件
 struct SonComponent {
+  @Link count:number
+  @Link dog:Dog
   // 编写 UI
   build() {
     Column({ space: 20 }) {
-      Text('子组件')
+      Text('子组件'+this.count)
         .fontSize(20)
+      Text(JSON.stringify(this.dog))
       Column() {
         Button('修改count')
           .onClick(() => {
+            this.count++
+            this.dog.name='!!!'
+            this.dog.color=Color.White
           })
       }
     }
