@@ -1,8 +1,8 @@
 @Entry
 @Component
 struct Index {
-  @Watch('handleChange')
-  @State msg:string = ''
+
+  @State @Watch('handleChange') msg:string = ''
 
   handleChange(){//处理函数
     console.log(this.msg)
