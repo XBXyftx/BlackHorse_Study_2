@@ -35,7 +35,7 @@ struct Link_Demo {
 @Component
   // 子组件
 struct SonComponent {
-  @Link count:number
+  @Link count:number//双向绑定
   @Link dog:Dog
   // 编写 UI
   build() {
