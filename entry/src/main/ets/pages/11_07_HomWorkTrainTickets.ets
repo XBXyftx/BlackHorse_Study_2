@@ -1,3 +1,5 @@
+import { it } from "@ohos/hypium"
+
 // 火车数据（只是渲染，不需要修改）
 interface iTicketData {
   id: number
@@ -38,13 +40,27 @@ struct Index {
     new AddressModel(5, '广州', false),
     new AddressModel(6, '广州北', false)
   ]
+  @State selectedNames: string[] = this.beginList.filter((item: AddressModel) => {
+    return item.isSelected
+  }).map((item: AddressModel) => {
+    return item.text
+  })
+
+  // update(){
+  //   this.selectedNames = this.beginList.filter((item:AddressModel)=>{
+  //     return item.isSelected
+  //   }).map((item:AddressModel)=>{
+  //     return item.text
+  //   })
+  //   console.log(this.selectedNames.toString())
+  // }
 
   build() {
     Column() {
       // 选中条件显示
       Row() {
         Text('您选中的条件：')
-        Text('广州南')
+        Text(this.selectedNames.toString())
       }
       .width('100%')
       .margin({ top: 10, left: 10 })
@@ -57,7 +73,13 @@ struct Index {
             ForEach(this.beginList, (item: AddressModel) => {
               // 给clickHander传数据的时候，记得使用箭头函数包括起来，这样this不会改变
               filterItemComp({
-                addressData:item
+                addressData: item,
+                clickSelected:()=>{
+                  item.isSelected = !item.isSelected
+                  console.log(JSON.stringify(item))
+                  const list = this.beginList.filter(item=>item.isSelected)
+                  this.selectedNames = list.map(item=>item.text)
+                }
               })
             })
 
@@ -70,7 +92,9 @@ struct Index {
       .margin({ top: 10 })
 
       //   车站列表
-      listComp()
+      listComp({
+        StartPosition: this.selectedNames
+      })
         .layoutWeight(1)
 
     }
@@ -83,17 +107,22 @@ struct Index {
 
 @Component
 export struct filterItemComp {
-  @Prop addressData:AddressModel
+  @ObjectLink addressData: AddressModel
+  clickSelected=()=>{
+
+  }
   build() {
     Column() {
-      Text(JSON.stringify(this.addressData))
-      // Text('广州南')
+      Text(this.addressData.text)// Text('广州南')
         .height(30)
-        .border({ width: 1, color: true ? '#0094ff' : '#fff' })
+        .border({ width: 1, color: this.addressData.isSelected ? '#0094ff' : '#fff' })
         .padding({ left: 15, right: 15 })
         .margin(5)
         .borderRadius(10)
         .backgroundColor(Color.White)
+        .onClick(() => {
+          this.clickSelected()
+        })
     }
   }
 }
@@ -101,6 +130,7 @@ export struct filterItemComp {
 
 @Component
 export struct listComp {
+  @Prop @Watch('update') StartPosition: string[]
   // 原始数据，不要直接修改，基于他进行筛选
   sourceData: iTicketData[] = [
     {
@@ -166,6 +196,25 @@ export struct listComp {
   ]
   // 默认使用完整的数据
   @State list: iTicketData[] = this.sourceData
+
+  update() {
+    // let PositionNames: string[] = this.StartPosition.map(item => {
+    //   return item.text
+    // })
+
+    // let names = PositionNames.map((item: string, i: number) => {
+    //   if (PositionNames.length === 0) {
+    //     return item
+    //   }
+    //   if (PositionNames.includes(item)) {
+    //     return item
+    //   } else {
+    //     return
+    //   }
+    // })
+    this.list = this.sourceData.filter(item => this.StartPosition.includes(item.beginStation))
+    console.log(JSON.stringify(this.list) + '检测到了改变')
+  }
 
   build() {
     List() {
@@ -278,7 +327,12 @@ export struct listComp {
               .padding({ top: 10 })
             }
             .width('100%')
-            .padding({ left: 15, right: 15, top: 10, bottom: 10 })
+            .padding({
+              left: 15,
+              right: 15,
+              top: 10,
+              bottom: 10
+            })
 
           }
           .width('100%')
