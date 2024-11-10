@@ -212,13 +212,19 @@ export struct listComp {
     //     return
     //   }
     // })
-    this.list = this.sourceData.filter(item => this.StartPosition.includes(item.beginStation))
-    console.log(JSON.stringify(this.list) + '检测到了改变')
+    if (this.list.length===0) {
+      this.list=this.sourceData
+    }else {
+      this.list = this.sourceData.filter(item => this.StartPosition.includes(item.beginStation))
+      console.log(this.list.map(item=>item.beginStation) + '  检测到了改变')
+    }
+    return this.list
+
   }
 
   build() {
     List() {
-      ForEach(this.list, (item: iTicketData) => {
+      ForEach(this.update(), (item: iTicketData) => {
         ListItem() {
           Column() {
             // 车票信息行
