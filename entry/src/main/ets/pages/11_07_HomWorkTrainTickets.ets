@@ -54,9 +54,11 @@ struct Index {
         Scroll() {
           Row() {
             // 出发
-            ForEach(Array.from({ length: 3 }), (item: AddressModel) => {
+            ForEach(this.beginList, (item: AddressModel) => {
               // 给clickHander传数据的时候，记得使用箭头函数包括起来，这样this不会改变
-              filterItemComp()
+              filterItemComp({
+                addressData:item
+              })
             })
 
           }
@@ -81,17 +83,17 @@ struct Index {
 
 @Component
 export struct filterItemComp {
+  @Prop addressData:AddressModel
   build() {
     Column() {
-      // Text(JSON.stringify(this.addressData))
-      Text('广州南')
+      Text(JSON.stringify(this.addressData))
+      // Text('广州南')
         .height(30)
         .border({ width: 1, color: true ? '#0094ff' : '#fff' })
         .padding({ left: 15, right: 15 })
         .margin(5)
         .borderRadius(10)
         .backgroundColor(Color.White)
-
     }
   }
 }
