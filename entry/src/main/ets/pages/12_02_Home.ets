@@ -1,0 +1,35 @@
+
+export class MovieInfo {
+  id: number = 0
+}
+
+@Entry
+@Component
+struct Home {
+  build() {
+    Stack() {
+      Image($r('app.media.douban_home'))
+        .width('100%')
+      Row({ space: 10 }) {
+        Button('热辣滚烫')
+          .onClick(() => {
+            // id: 36081094 图片 params_movie1
+
+          })
+        Button('第二十条')
+          .onClick(() => {
+            // id: 36208094  图片 params_movie2
+
+          })
+        Button('飞驰人生')
+          .onClick(() => {
+            // id: 36369452  图片 params_movie3
+
+          })
+      }
+      .translate({ x: -10 })
+
+    }
+    .height('100%')
+  }
+}

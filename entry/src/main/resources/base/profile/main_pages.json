@@ -1,5 +1,7 @@
 {
   "src": [
-    "pages/11_07_HomWorkTrainTickets"
+    "pages/11_07_HomWorkTrainTickets",
+    "pages/12_03_Params",
+    "pages/12_02_Home"
   ]
 }
