@@ -1,6 +1,7 @@
 import { router } from "@kit.ArkUI"
 
 interface Project{
+  Id:number
   img:Resource
   title:string
   describe:string
@@ -13,9 +14,9 @@ interface Project{
 struct IndexPage {
 
   projects:Project[]=[
-    {img:$rawfile('project01.png'),title:'后台管理系统',describe:'以Vue技能管理后台系统面试题整理',tag:'后台系统',schedule:'10%'},
-    {img:$rawfile('project02.png'),title:'在线医生问诊平台',describe:'以Vue3+ts实现在线医疗问诊功能',tag:'H5项目',schedule:'20%'},
-    {img:$rawfile('project03.png'),title:'鸿蒙知识点',describe:'ArkTS和ArkUI为主的鸿蒙知识点讲解',tag:'鸿蒙应用',schedule:'30%'},
+    {Id:1,img:$rawfile('project01.png'),title:'后台管理系统',describe:'以Vue技能管理后台系统面试题整理',tag:'后台系统',schedule:'10%'},
+    {Id:2,img:$rawfile('project02.png'),title:'在线医生问诊平台',describe:'以Vue3+ts实现在线医疗问诊功能',tag:'H5项目',schedule:'20%'},
+    {Id:3,img:$rawfile('project03.png'),title:'鸿蒙知识点',describe:'ArkTS和ArkUI为主的鸿蒙知识点讲解',tag:'鸿蒙应用',schedule:'30%'},
   ]
 
   build() {

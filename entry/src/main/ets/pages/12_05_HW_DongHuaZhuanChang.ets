@@ -1,9 +1,12 @@
-interface Project {
-  img: Resource
-  title: string
-  describe: string
-  tag: string
-  schedule: string
+import { router } from "@kit.ArkUI"
+
+interface Project{
+  Id:number
+  img:Resource
+  title:string
+  describe:string
+  tag:string
+  schedule:string
 }
 
 @Entry
@@ -11,6 +14,18 @@ interface Project {
 export struct ProjectDetailComp {
   @State img: ResourceStr = ''
   @State title: string = ''
+  @State describe:string = ''
+  @State Id:number = 0
+  @State schedule:string = ''
+
+  aboutToAppear(): void {
+    let project = router.getParams() as Project
+    this.img = project.img
+    this.title = project.title
+    this.describe = project.describe
+    this.Id = project.Id
+    this.schedule = project.schedule
+  }
 
   build() {
     Column() {
@@ -31,19 +46,19 @@ export struct ProjectDetailComp {
           .width('100%')
 
           Row({ space: 16 }) {
-            Image($r('app.media.project02'))
+            Image(this.img)
               .width(86)
               .height(114)
-              .sharedTransition('标记', { duration: 300 })
+              .sharedTransition(this.Id.toString(), { duration: 300 })
             Column({ space: 16 }) {
-              Text('名字')
+              Text(this.title)
                 .fontWeight(500)
                 .fontColor(Color.White)
-              Text('描述信息')
+              Text(this.describe)
                 .fontSize(14)
                 .fontColor(Color.White)
               Blank()
-              Text('学习进度：10%')
+              Text(`学习进度：${this.schedule}`)
                 .fontColor('#979797')
                 .fontSize(14)
             }
