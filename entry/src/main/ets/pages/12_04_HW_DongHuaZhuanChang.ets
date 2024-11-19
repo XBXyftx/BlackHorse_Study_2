@@ -70,7 +70,7 @@ struct ProjectCom {
     Row({ space: 10 }) {
       Image(this.project.img)// 图片
         .size({ width: 60, height: 80 })
-        .sharedTransition('id', { duration: 300 })
+        .sharedTransition(this.project.Id.toString(), { duration: 300 })
       Column({ space: 4 }) {
         Text(this.project.title)
           .fontWeight(500)

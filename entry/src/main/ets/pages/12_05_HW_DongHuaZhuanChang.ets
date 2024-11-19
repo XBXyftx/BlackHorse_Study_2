@@ -38,6 +38,9 @@ export struct ProjectDetailComp {
             Image($r('app.media.ohos_ic_public_arrow_left'))
               .size({ width: 24, height: 24 })
               .fillColor(Color.White)
+              .onClick(()=>{
+                router.back()
+              })
             Blank()
               .layoutWeight(1)
 
